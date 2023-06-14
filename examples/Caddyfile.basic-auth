@@ -1,0 +1,34 @@
+# This example configuration shows you how to host a simple file server
+# that allows file uploads via HTTP PUT to the /upload directory. You can
+# then browse the uploaded files using a web browser. Access to the server
+# is protected by HTTP basic authentication with the username 'Bob' and
+# password 'hiccup'.
+
+:8080 {
+	# Set the log level to DEBUG for detailed log messages
+	log {
+		level DEBUG
+	}
+
+	# Enable basic authentication for accessing all resources on the server
+	basicauth {
+		# Bob:hiccup
+		Bob $2a$14$Zkx19XLiW6VYouLHR5NmfOFU0z2GTNmpkT/5qqR7hx4IjWJPDhjvG
+	}
+
+	# Route requests that match the path pattern '/upload*' to our upload handler
+	route /upload* {
+		# Handle HTTP PUT requests and save the uploaded files to the './test'
+		# directory, removing the '/upload' from the request URI.
+		http_put_file ./test /upload
+	}
+
+	# Catch-all route for any other paths
+	route /* {
+		# Set the document root for these requests to the './test/' directory
+		root * ./test/
+
+		# Enable file browsing for the files in the './test/' directory
+		file_server browse
+	}
+}

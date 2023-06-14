@@ -1,0 +1,30 @@
+# Summary: This example Caddyfile configures a sample server on port 8080.
+# It demonstrates file upload handling, file browsing, and detailed logging.
+# The server, for demonstration purposes, does not require authentication
+# for any access, including file upload. It sets the log level to DEBUG and
+# uses the './test' directory as the document root.
+
+:8080 {
+	# Set the log level to DEBUG for detailed log messages
+	log {
+		level DEBUG
+	}
+
+	# Route requests that match the path pattern '/upload*' to a specific handler
+	route /upload* {
+		# Set the document root for these requests to the './test' directory
+		root ./test
+
+		# Handle HTTP PUT requests and save the uploaded files to the 'upload/' subdirectory
+		http_put_file ./test upload/
+	}
+
+	# Catch-all route for any other paths
+	route /* {
+		# Set the document root for these requests to the './test/' directory
+		root * ./test/
+
+		# Enable file browsing for the files in the './test/' directory
+		file_server browse
+	}
+}

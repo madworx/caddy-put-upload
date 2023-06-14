@@ -1,13 +1,35 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Launch application",
-            "type": "go",
-            "request": "launch",
-            "mode": "auto",
-            "program": "cmd/caddy/main.go",
-            "args": ["run", "--config", "Caddyfile.example"]
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch application (Basic authentication)",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "cmd/caddy/main.go",
+      "cwd": "${workspaceFolder}",
+      "args": ["run", "--config", "./examples/Caddyfile.basic-auth"]
+    },
+    {
+      "name": "Launch application (No authentication)",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "cmd/caddy/main.go",
+      "cwd": "${workspaceFolder}",
+      "args": ["run", "--config", "./examples/Caddyfile.no-authentication"]
+    },
+    {
+      "command": "curl -viT go.mod http://Bob:hiccup@localhost:8080/upload/$(date +%s)/test.txt ; read -p 'Press ENTER to exit.' ; exit 0",
+      "name": "Test upload",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "make all ; read -p 'Press ENTER to exit.' ; exit 0",
+      "name": "Make all",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ]
 }

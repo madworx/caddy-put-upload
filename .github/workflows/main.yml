@@ -1,0 +1,71 @@
+name: Build and test
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REPORT_LINK_BASE: "https://madworx.github.io/caddy-put-upload/results/${{ github.run_id }}"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: docker/setup-buildx-action@v2
+      - uses: docker/build-push-action@v4
+        with:
+          tags: madworx/caddy-put-upload:latest
+          file: .devcontainer/Dockerfile
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and test application
+        run: |
+          docker run -u $(id -u) --rm \
+            -e REPORT_LINK_BASE -e HOME=/w \
+            -e PATH=/w/.local/bin:/usr/local/go/bin:/bin:/usr/bin:/go/bin \
+            -v $(pwd):/w -w /w \
+            madworx/caddy-put-upload \
+            make install-deps all
+
+      - name: Store test artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: results
+          path: e2e_tests/results
+
+      - name: Add build status summary
+        if: always()
+        run: cat e2e_tests/results/report.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Checkout gh-pages
+        if: always()
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+
+      - name: Add test artifacts to gh-pages
+        if: always()
+        run: mkdir -p "results/${{ github.run_id }}"
+
+      - name: Restore test artifacts
+        if: always()
+        uses: actions/download-artifact@v3
+        with:
+          name: results
+          path: results/${{ github.run_id }}
+
+      - name: Commit and push
+        if: always()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -m 'Update GitHub Pages'
+          git push

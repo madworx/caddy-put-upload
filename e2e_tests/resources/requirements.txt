@@ -1,0 +1,7 @@
+robotframework~=6.0
+robotframework-requests~=0.0
+robotframework-tidy~=4.0
+robotframework-lint~=1.0
+xmltodict~=0.0
+black~=23.0
+pylint~=2.0

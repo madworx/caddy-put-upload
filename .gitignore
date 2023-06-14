@@ -1,0 +1,6 @@
+__debug_bin
+*.done
+*~
+dist
+e2e_tests/results
+uploads

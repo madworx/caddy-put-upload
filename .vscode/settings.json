@@ -10,16 +10,32 @@
   "files.eol": "\n",
   "go.lintTool": "staticcheck",
   "go.lintOnSave": "file",
+  "go.formatTool": "gofumpt",
+  "python.formatting.blackArgs": ["--line-length", "120"],
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.pylintArgs": ["--max-line-length=120"],
+  "python.linting.pylintEnabled": true,
   "editor.formatOnSaveMode": "file",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "sarif-viewer.connectToGithubCodeScanning": "on",
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
-  },
   "files.associations": {
-    "**/Caddyfile.example": "caddyfile"
+    "**/Caddyfile.*": "caddyfile"
+  },
+  "files.exclude": {
+    "**/__debug_bin": true,
+    "**/*.done": true
+  },
+  "robot.codeFormatter": "robotidy",
+  "robot.lint.robocop.enabled": true,
+  "cSpell.customDictionaries": {
+    "custom-dictionary-workspace": {
+      "name": "custom-dictionary-workspace",
+      "path": "${workspaceFolder:caddy-put-upload}/.cspell/custom-dictionary-workspace.txt",
+      "addWords": true,
+      "scope": "workspace"
+    }
   }
 }
