@@ -1,0 +1,25 @@
+{
+  "gopls": {
+    "usePlaceholders": true,
+    "completeUnimported": true,
+    "gofumpt": true,
+    "ui.diagnostic.staticcheck": true
+  },
+  "go.testFlags": ["-count=1"],
+  "go.useLanguageServer": true,
+  "files.eol": "\n",
+  "go.lintTool": "staticcheck",
+  "go.lintOnSave": "file",
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "sarif-viewer.connectToGithubCodeScanning": "on",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "files.associations": {
+    "**/Caddyfile.example": "caddyfile"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Go",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "github.copilot",
+        "github.vscode-github-actions",
+        "ms-azuretools.vscode-docker",
+        "MS-SarifVSCode.sarif-viewer",
+        "ms-vsliveshare.vsliveshare",
+        "streetsidesoftware.code-spell-checker",
+        "matthewpi.caddyfile-support",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": {
+    "tidy": "go mod tidy",
+    "xcaddy": "go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest",
+    "caddy": "go install github.com/caddyserver/caddy/v2/cmd/caddy@latest"
+  }
+}

@@ -1,0 +1,5 @@
+:8080 {
+	route {
+		http_put_file ./uploads
+	}
+}
