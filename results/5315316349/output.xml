@@ -1,0 +1,1966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1 (Python 3.9.2 on linux)" generated="20230619 19:04:39.676" rpa="false" schemaversion="4">
+<suite id="s1" name="E2E Tests" source="/w/e2e_tests">
+<suite id="s1-s1" name="001 Source Code" source="/w/e2e_tests/001_source_code.robot">
+<test id="s1-s1-t1" name="Golang" line="8">
+<kw name="Expect Successful Execution" library="keywords">
+<arg>make lint-go</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:04:39.767" level="INFO">Starting process:
+make lint-go</msg>
+<msg timestamp="20230619 19:04:39.782" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:11.024" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:11.024" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:04:39.766" endtime="20230619 19:06:11.024"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:11.026" endtime="20230619 19:06:11.026"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:11.025" endtime="20230619 19:06:11.026"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:11.025" endtime="20230619 19:06:11.026"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:11.027" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:11.026" endtime="20230619 19:06:11.027"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:11.027" endtime="20230619 19:06:11.027"/>
+</return>
+<status status="PASS" starttime="20230619 19:04:39.766" endtime="20230619 19:06:11.027"/>
+</kw>
+<doc>Lint Golang code</doc>
+<status status="PASS" starttime="20230619 19:04:39.764" endtime="20230619 19:06:11.028"/>
+</test>
+<test id="s1-s1-t2" name="Robot Framework" line="12">
+<kw name="Expect Successful Execution" library="keywords">
+<arg>make lint-robot</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:11.030" level="INFO">Starting process:
+make lint-robot</msg>
+<msg timestamp="20230619 19:06:11.032" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:11.658" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:11.658" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:11.030" endtime="20230619 19:06:11.659"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:11.660" endtime="20230619 19:06:11.660"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:11.659" endtime="20230619 19:06:11.660"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:11.659" endtime="20230619 19:06:11.660"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:11.661" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:11.660" endtime="20230619 19:06:11.661"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:11.661" endtime="20230619 19:06:11.661"/>
+</return>
+<status status="PASS" starttime="20230619 19:06:11.029" endtime="20230619 19:06:11.661"/>
+</kw>
+<doc>Lint Robot Framework code</doc>
+<status status="PASS" starttime="20230619 19:06:11.028" endtime="20230619 19:06:11.661"/>
+</test>
+<test id="s1-s1-t3" name="Python" line="16">
+<kw name="Expect Successful Execution" library="keywords">
+<arg>make lint-python</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:11.664" level="INFO">Starting process:
+make lint-python</msg>
+<msg timestamp="20230619 19:06:11.666" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:14.084" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:14.085" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:11.663" endtime="20230619 19:06:14.085"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:14.086" endtime="20230619 19:06:14.086"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:14.085" endtime="20230619 19:06:14.086"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:14.085" endtime="20230619 19:06:14.086"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:14.087" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:14.086" endtime="20230619 19:06:14.087"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:14.087" endtime="20230619 19:06:14.087"/>
+</return>
+<status status="PASS" starttime="20230619 19:06:11.663" endtime="20230619 19:06:14.087"/>
+</kw>
+<doc>Lint Python code</doc>
+<status status="PASS" starttime="20230619 19:06:11.662" endtime="20230619 19:06:14.088"/>
+</test>
+<doc>This test suite performs code linting for different languages.</doc>
+<status status="PASS" starttime="20230619 19:04:39.693" endtime="20230619 19:06:14.088"/>
+</suite>
+<suite id="s1-s2" name="002 Unit Tests" source="/w/e2e_tests/002_unit_tests.robot">
+<kw name="Suite Setup" library="keywords" type="SETUP">
+<doc>Ensure there is a directory for coverage files</doc>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20230619 19:06:14.094" level="INFO" html="true">Created directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 19:06:14.094" endtime="20230619 19:06:14.094"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:14.093" endtime="20230619 19:06:14.094"/>
+</kw>
+<test id="s1-s2-t1" name="Unit tests" line="12">
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/002_unit_tests.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 19:06:14.095" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 19:06:14.095" level="INFO">${suite_filename} = 002_unit_tests.robot</msg>
+<status status="PASS" starttime="20230619 19:06:14.095" endtime="20230619 19:06:14.095"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 19:06:14.095" level="INFO">${suite_name} = 002_unit_tests</msg>
+<msg timestamp="20230619 19:06:14.095" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 19:06:14.095" endtime="20230619 19:06:14.095"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 19:06:14.096" level="INFO">${cov_path} = /w/e2e_tests/results/002_unit_tests.coverage</msg>
+<status status="PASS" starttime="20230619 19:06:14.096" endtime="20230619 19:06:14.096"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 19:06:14.096" endtime="20230619 19:06:14.096"/>
+</return>
+<msg timestamp="20230619 19:06:14.096" level="INFO">${cov_path} = /w/e2e_tests/results/002_unit_tests.coverage</msg>
+<msg timestamp="20230619 19:06:14.096" level="INFO">${cov_filename} = 002_unit_tests.coverage</msg>
+<status status="PASS" starttime="20230619 19:06:14.095" endtime="20230619 19:06:14.096"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>go test ./... -v -coverprofile\=${cov_path} -covermode\=set</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:14.096" level="INFO">Starting process:
+go test ./... -v -coverprofile=/w/e2e_tests/results/002_unit_tests.coverage -covermode=set</msg>
+<msg timestamp="20230619 19:06:14.099" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:27.383" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:27.383" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:14.096" endtime="20230619 19:06:27.383"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${result.stderr}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 19:06:27.385" level="INFO">=== RUN   TestServeHTTP
+--- PASS: TestServeHTTP (0.00s)
+=== RUN   TestParseCaddyfile
+--- PASS: TestParseCaddyfile (0.00s)
+PASS
+	github.com/madworx/caddy-put-upload	coverage: 73.3% of statements
+ok  	github.com/madworx/caddy-put-upload	0.012s	coverage: 73.3% of statements
+?   	github.com/madworx/caddy-put-upload/cmd/caddy	[no test files]
+?   	github.com/madworx/caddy-put-upload/cmd/gocovmerge	[no test files]
+?   	github.com/madworx/caddy-put-upload/e2e_tests/resources	[no test files]</msg>
+<msg timestamp="20230619 19:06:27.385" level="INFO"/>
+<status status="PASS" starttime="20230619 19:06:27.384" endtime="20230619 19:06:27.385"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:27.386" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:27.385" endtime="20230619 19:06:27.386"/>
+</kw>
+<doc>Execute golang unit tests</doc>
+<status status="PASS" starttime="20230619 19:06:14.094" endtime="20230619 19:06:27.386"/>
+</test>
+<test id="s1-s2-t2" name="Failing unit tests should be detected" line="20">
+<kw name="Copy File" library="OperatingSystem">
+<arg>e2e_tests/resources/test_fail.go</arg>
+<arg>fail_test.go</arg>
+<doc>Copies the source file into the destination.</doc>
+<msg timestamp="20230619 19:06:27.389" level="INFO" html="true">Copied file from '&lt;a href="file:///w/e2e_tests/resources/test_fail.go"&gt;/w/e2e_tests/resources/test_fail.go&lt;/a&gt;' to '&lt;a href="file:///w/fail_test.go"&gt;/w/fail_test.go&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 19:06:27.387" endtime="20230619 19:06:27.389"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>go test ./... -v</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:27.389" level="INFO">Starting process:
+go test ./... -v</msg>
+<msg timestamp="20230619 19:06:27.391" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:29.218" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:29.218" level="INFO">${result} = &lt;result object with rc 1&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:27.389" endtime="20230619 19:06:29.218"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${result.stderr}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 19:06:29.219" level="INFO">?   	github.com/madworx/caddy-put-upload/cmd/caddy	[no test files]
+=== RUN   TestFailure
+--- FAIL: TestFailure (0.00s)
+=== RUN   TestServeHTTP
+--- PASS: TestServeHTTP (0.00s)
+=== RUN   TestParseCaddyfile
+--- PASS: TestParseCaddyfile (0.00s)
+FAIL
+FAIL	github.com/madworx/caddy-put-upload	0.012s
+?   	github.com/madworx/caddy-put-upload/cmd/gocovmerge	[no test files]
+?   	github.com/madworx/caddy-put-upload/e2e_tests/resources	[no test files]
+FAIL</msg>
+<msg timestamp="20230619 19:06:29.220" level="INFO"/>
+<status status="PASS" starttime="20230619 19:06:29.219" endtime="20230619 19:06:29.220"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:29.221" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:29.220" endtime="20230619 19:06:29.221"/>
+</kw>
+<kw name="Remove File" library="OperatingSystem" type="TEARDOWN">
+<arg>fail_test.go</arg>
+<doc>Removes a file with the given path.</doc>
+<msg timestamp="20230619 19:06:29.221" level="INFO" html="true">Removed file '&lt;a href="file:///w/fail_test.go"&gt;/w/fail_test.go&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 19:06:29.221" endtime="20230619 19:06:29.221"/>
+</kw>
+<doc>Ensure that we notice if unit tests start to fail</doc>
+<status status="PASS" starttime="20230619 19:06:27.386" endtime="20230619 19:06:29.221"/>
+</test>
+<kw name="Suite Teardown" library="keywords" type="TEARDOWN">
+<doc>Generate coverage report and remove coverage directory</doc>
+<kw name="Generate Coverage Report" library="keywords">
+<doc>Generate coverage report from generated files</doc>
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/002_unit_tests.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 19:06:29.224" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 19:06:29.224" level="INFO">${suite_filename} = 002_unit_tests.robot</msg>
+<status status="PASS" starttime="20230619 19:06:29.224" endtime="20230619 19:06:29.224"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 19:06:29.225" level="INFO">${suite_name} = 002_unit_tests</msg>
+<msg timestamp="20230619 19:06:29.225" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 19:06:29.225" endtime="20230619 19:06:29.225"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 19:06:29.226" level="INFO">${cov_path} = /w/e2e_tests/results/002_unit_tests.coverage</msg>
+<status status="PASS" starttime="20230619 19:06:29.225" endtime="20230619 19:06:29.226"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 19:06:29.226" endtime="20230619 19:06:29.226"/>
+</return>
+<msg timestamp="20230619 19:06:29.226" level="INFO">${cov_path} = /w/e2e_tests/results/002_unit_tests.coverage</msg>
+<msg timestamp="20230619 19:06:29.226" level="INFO">${cov_filename} = 002_unit_tests.coverage</msg>
+<status status="PASS" starttime="20230619 19:06:29.224" endtime="20230619 19:06:29.226"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${dir_exists}</var>
+<arg>Directory Should Exist</arg>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20230619 19:06:29.227" level="INFO" html="true">Directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20230619 19:06:29.226" endtime="20230619 19:06:29.227"/>
+</kw>
+<msg timestamp="20230619 19:06:29.227" level="INFO">${dir_exists} = True</msg>
+<status status="PASS" starttime="20230619 19:06:29.226" endtime="20230619 19:06:29.227"/>
+</kw>
+<if>
+<branch type="IF" condition="${dir_exists}">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${dir_contents}</var>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20230619 19:06:29.227" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 19:06:29.227" level="INFO">0 files:
+</msg>
+<msg timestamp="20230619 19:06:29.227" level="INFO">${dir_contents} = []</msg>
+<status status="PASS" starttime="20230619 19:06:29.227" endtime="20230619 19:06:29.227"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:29.227" endtime="20230619 19:06:29.227"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir_contents}</var>
+<arg>${None}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:29.227" endtime="20230619 19:06:29.228"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:29.227" endtime="20230619 19:06:29.228"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:29.227" endtime="20230619 19:06:29.228"/>
+</if>
+<if>
+<branch type="IF" condition="${dir_contents}">
+<kw name="Convert Coverage Fragments" library="keywords">
+<arg>${cov_path}</arg>
+<doc>Convert coverage fragments (from a go run/build -cover execution) into
+a single file</doc>
+<status status="NOT RUN" starttime="20230619 19:06:29.228" endtime="20230619 19:06:29.228"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:29.228" endtime="20230619 19:06:29.228"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:29.228" endtime="20230619 19:06:29.228"/>
+</if>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go tool cover -html\=${cov_path} -o\=${cov_path}.html</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:29.230" level="INFO">Starting process:
+go tool cover -html=/w/e2e_tests/results/002_unit_tests.coverage -o=/w/e2e_tests/results/002_unit_tests.coverage.html</msg>
+<msg timestamp="20230619 19:06:29.232" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:29.563" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:29.563" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:29.229" endtime="20230619 19:06:29.563"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:29.564" endtime="20230619 19:06:29.565"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:29.563" endtime="20230619 19:06:29.565"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:29.563" endtime="20230619 19:06:29.565"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:29.565" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:29.565" endtime="20230619 19:06:29.565"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:29.566" endtime="20230619 19:06:29.566"/>
+</return>
+<status status="PASS" starttime="20230619 19:06:29.229" endtime="20230619 19:06:29.566"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<var>${result}</var>
+<arg>go tool cover -func\=${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:29.568" level="INFO">Starting process:
+go tool cover -func=/w/e2e_tests/results/002_unit_tests.coverage</msg>
+<msg timestamp="20230619 19:06:29.570" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:29.914" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:29.914" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:29.567" endtime="20230619 19:06:29.914"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:29.916" endtime="20230619 19:06:29.916"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:29.915" endtime="20230619 19:06:29.916"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:29.915" endtime="20230619 19:06:29.916"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:29.917" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:29.916" endtime="20230619 19:06:29.917"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:29.917" endtime="20230619 19:06:29.917"/>
+</return>
+<msg timestamp="20230619 19:06:29.917" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:29.567" endtime="20230619 19:06:29.917"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${percent}</var>
+<arg>${result.stdout}</arg>
+<arg>total:.*?([0-9.]+%)$</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230619 19:06:29.918" level="INFO">${percent} = ['73.3%']</msg>
+<status status="PASS" starttime="20230619 19:06:29.917" endtime="20230619 19:06:29.918"/>
+</kw>
+<kw name="Set Suite Metadata" library="BuiltIn">
+<arg>Code coverage</arg>
+<arg>${percent[0]} [${cov_filename}.html|HTML Report] | [${cov_filename}|Coverage file]</arg>
+<doc>Sets metadata for the current test suite.</doc>
+<msg timestamp="20230619 19:06:29.919" level="INFO">Set suite metadata 'Code coverage' to value '73.3% [002_unit_tests.coverage.html|HTML Report] | [002_unit_tests.coverage|Coverage file]'.</msg>
+<status status="PASS" starttime="20230619 19:06:29.918" endtime="20230619 19:06:29.919"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:29.223" endtime="20230619 19:06:29.919"/>
+</kw>
+<kw name="Remove Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<arg>recursive=True</arg>
+<doc>Removes the directory pointed to by the given ``path``.</doc>
+<msg timestamp="20230619 19:06:29.920" level="INFO" html="true">Removed directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 19:06:29.919" endtime="20230619 19:06:29.920"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:29.223" endtime="20230619 19:06:29.920"/>
+</kw>
+<doc>Run native unit tests for the golang code and serves to aggregate
+all test results into one report, also generating a coverage report.</doc>
+<meta name="Code coverage">73.3% [002_unit_tests.coverage.html|HTML Report] | [002_unit_tests.coverage|Coverage file]</meta>
+<status status="PASS" starttime="20230619 19:06:14.089" endtime="20230619 19:06:29.920"/>
+</suite>
+<suite id="s1-s3" name="003 Configuration" source="/w/e2e_tests/003_configuration.robot">
+<kw name="Suite Setup" library="keywords" type="SETUP">
+<doc>Ensure there is a directory for coverage files</doc>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20230619 19:06:29.926" level="INFO" html="true">Created directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 19:06:29.925" endtime="20230619 19:06:29.926"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:29.925" endtime="20230619 19:06:29.926"/>
+</kw>
+<test id="s1-s3-t1" name="Example configuration: basic authentication" line="14">
+<kw name="Validate Configuration" library="keywords">
+<arg>examples/Caddyfile.basic-auth</arg>
+<arg>0</arg>
+<doc>Validate if configuration behaves as expected</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${CADDY_VALIDATE} ${file_name}</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:29.927" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go validate --config examples/Caddyfile.basic-auth</msg>
+<msg timestamp="20230619 19:06:29.930" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:31.845" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:31.846" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:29.927" endtime="20230619 19:06:31.846"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:31.847" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:31.846" endtime="20230619 19:06:31.847"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${expected_response}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230619 19:06:31.848" endtime="20230619 19:06:31.848"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:29.926" endtime="20230619 19:06:31.848"/>
+</kw>
+<doc>Test that example configuration with HTTP basic authentication is accepted</doc>
+<status status="PASS" starttime="20230619 19:06:29.926" endtime="20230619 19:06:31.848"/>
+</test>
+<test id="s1-s3-t2" name="Example configuration: no authentication" line="18">
+<kw name="Validate Configuration" library="keywords">
+<arg>examples/Caddyfile.no-authentication</arg>
+<arg>0</arg>
+<doc>Validate if configuration behaves as expected</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${CADDY_VALIDATE} ${file_name}</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:31.851" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go validate --config examples/Caddyfile.no-authentication</msg>
+<msg timestamp="20230619 19:06:31.853" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:33.701" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:33.702" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:31.850" endtime="20230619 19:06:33.702"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:33.703" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:33.702" endtime="20230619 19:06:33.703"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${expected_response}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230619 19:06:33.704" endtime="20230619 19:06:33.704"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:31.849" endtime="20230619 19:06:33.704"/>
+</kw>
+<doc>Test that example configuration without authentication is accepted</doc>
+<status status="PASS" starttime="20230619 19:06:31.849" endtime="20230619 19:06:33.704"/>
+</test>
+<test id="s1-s3-t3" name="Invalid configuration: empty" line="22">
+<kw name="Validate Configuration" library="keywords">
+<arg>e2e_tests/resources/Caddyfile.invalid-no-arg</arg>
+<arg>1</arg>
+<arg>Wrong argument count or unexpected line ending after 'http_put_file'</arg>
+<doc>Validate if configuration behaves as expected</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${CADDY_VALIDATE} ${file_name}</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:33.707" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go validate --config e2e_tests/resources/Caddyfile.invalid-no-arg</msg>
+<msg timestamp="20230619 19:06:33.710" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:35.576" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:35.576" level="INFO">${result} = &lt;result object with rc 1&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:33.706" endtime="20230619 19:06:35.576"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:35.578" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:35.577" endtime="20230619 19:06:35.578"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${expected_response}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230619 19:06:35.578" endtime="20230619 19:06:35.579"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:33.706" endtime="20230619 19:06:35.579"/>
+</kw>
+<doc>Test that an invalid configuration is rejected (no arguments)</doc>
+<status status="PASS" starttime="20230619 19:06:33.705" endtime="20230619 19:06:35.579"/>
+</test>
+<test id="s1-s3-t4" name="Invalid configuration: structure" line="28">
+<kw name="Validate Configuration" library="keywords">
+<arg>e2e_tests/resources/Caddyfile.invalid-nested-args</arg>
+<arg>1</arg>
+<arg>Wrong argument count or unexpected line ending after 'http_put_file'</arg>
+<doc>Validate if configuration behaves as expected</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${CADDY_VALIDATE} ${file_name}</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:35.581" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go validate --config e2e_tests/resources/Caddyfile.invalid-nested-args</msg>
+<msg timestamp="20230619 19:06:35.583" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:37.456" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:37.457" level="INFO">${result} = &lt;result object with rc 1&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:35.580" endtime="20230619 19:06:37.457"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:37.458" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:37.457" endtime="20230619 19:06:37.458"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${expected_response}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230619 19:06:37.459" endtime="20230619 19:06:37.459"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:35.580" endtime="20230619 19:06:37.459"/>
+</kw>
+<doc>Test that an invalid configuration is rejected (nested argument)</doc>
+<status status="PASS" starttime="20230619 19:06:35.579" endtime="20230619 19:06:37.459"/>
+</test>
+<kw name="Suite Teardown" library="keywords" type="TEARDOWN">
+<doc>Generate coverage report and remove coverage directory</doc>
+<kw name="Generate Coverage Report" library="keywords">
+<doc>Generate coverage report from generated files</doc>
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/003_configuration.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 19:06:37.461" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 19:06:37.461" level="INFO">${suite_filename} = 003_configuration.robot</msg>
+<status status="PASS" starttime="20230619 19:06:37.461" endtime="20230619 19:06:37.461"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 19:06:37.462" level="INFO">${suite_name} = 003_configuration</msg>
+<msg timestamp="20230619 19:06:37.462" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 19:06:37.461" endtime="20230619 19:06:37.462"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 19:06:37.462" level="INFO">${cov_path} = /w/e2e_tests/results/003_configuration.coverage</msg>
+<status status="PASS" starttime="20230619 19:06:37.462" endtime="20230619 19:06:37.462"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 19:06:37.462" endtime="20230619 19:06:37.462"/>
+</return>
+<msg timestamp="20230619 19:06:37.462" level="INFO">${cov_path} = /w/e2e_tests/results/003_configuration.coverage</msg>
+<msg timestamp="20230619 19:06:37.462" level="INFO">${cov_filename} = 003_configuration.coverage</msg>
+<status status="PASS" starttime="20230619 19:06:37.461" endtime="20230619 19:06:37.462"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${dir_exists}</var>
+<arg>Directory Should Exist</arg>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20230619 19:06:37.463" level="INFO" html="true">Directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20230619 19:06:37.463" endtime="20230619 19:06:37.463"/>
+</kw>
+<msg timestamp="20230619 19:06:37.463" level="INFO">${dir_exists} = True</msg>
+<status status="PASS" starttime="20230619 19:06:37.462" endtime="20230619 19:06:37.463"/>
+</kw>
+<if>
+<branch type="IF" condition="${dir_exists}">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${dir_contents}</var>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20230619 19:06:37.464" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 19:06:37.464" level="INFO">5 files:
+covcounters.6b007adb3d230b7f717346764648bf5a.7639.1687201591834048815
+covcounters.6b007adb3d230b7f717346764648bf5a.7694.1687201593687400147
+covcounters.6b007adb3d230b7f717346764648bf5a.7748.1687201595564613662
+covcounters.6b007adb3d230b7f717346764648bf5a.7800.1687201597445675406
+covmeta.6b007adb3d230b7f717346764648bf5a</msg>
+<msg timestamp="20230619 19:06:37.464" level="INFO">${dir_contents} = ['covcounters.6b007adb3d230b7f717346764648bf5a.7639.1687201591834048815', 'covcounters.6b007adb3d230b7f717346764648bf5a.7694.1687201593687400147', 'covcounters.6b007adb3d230b7f717346764648bf5a.7748.16...</msg>
+<status status="PASS" starttime="20230619 19:06:37.463" endtime="20230619 19:06:37.464"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:37.463" endtime="20230619 19:06:37.464"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir_contents}</var>
+<arg>${None}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:37.464" endtime="20230619 19:06:37.464"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:37.464" endtime="20230619 19:06:37.464"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:37.463" endtime="20230619 19:06:37.464"/>
+</if>
+<if>
+<branch type="IF" condition="${dir_contents}">
+<kw name="Convert Coverage Fragments" library="keywords">
+<arg>${cov_path}</arg>
+<doc>Convert coverage fragments (from a go run/build -cover execution) into
+a single file</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>go tool covdata textfmt -i\=${OUTPUT DIR}/go-coverage -o\=${cov_path}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:37.465" level="INFO">Starting process:
+go tool covdata textfmt -i=/w/e2e_tests/results/go-coverage -o=/w/e2e_tests/results/003_configuration.coverage</msg>
+<msg timestamp="20230619 19:06:37.468" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:37.475" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:37.475" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:37.464" endtime="20230619 19:06:37.475"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:37.477" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:37.475" endtime="20230619 19:06:37.477"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:37.464" endtime="20230619 19:06:37.477"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:37.464" endtime="20230619 19:06:37.477"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:37.464" endtime="20230619 19:06:37.477"/>
+</if>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go tool cover -html\=${cov_path} -o\=${cov_path}.html</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:37.479" level="INFO">Starting process:
+go tool cover -html=/w/e2e_tests/results/003_configuration.coverage -o=/w/e2e_tests/results/003_configuration.coverage.html</msg>
+<msg timestamp="20230619 19:06:37.481" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:37.830" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:37.831" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:37.479" endtime="20230619 19:06:37.831"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:37.832" endtime="20230619 19:06:37.832"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:37.831" endtime="20230619 19:06:37.832"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:37.831" endtime="20230619 19:06:37.832"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:37.833" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:37.832" endtime="20230619 19:06:37.833"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:37.833" endtime="20230619 19:06:37.833"/>
+</return>
+<status status="PASS" starttime="20230619 19:06:37.478" endtime="20230619 19:06:37.833"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<var>${result}</var>
+<arg>go tool cover -func\=${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:37.835" level="INFO">Starting process:
+go tool cover -func=/w/e2e_tests/results/003_configuration.coverage</msg>
+<msg timestamp="20230619 19:06:37.838" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:38.192" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:38.192" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:37.835" endtime="20230619 19:06:38.192"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:38.194" endtime="20230619 19:06:38.194"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:38.193" endtime="20230619 19:06:38.194"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:38.193" endtime="20230619 19:06:38.194"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:38.195" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:38.194" endtime="20230619 19:06:38.195"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:38.195" endtime="20230619 19:06:38.195"/>
+</return>
+<msg timestamp="20230619 19:06:38.195" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:37.834" endtime="20230619 19:06:38.195"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${percent}</var>
+<arg>${result.stdout}</arg>
+<arg>total:.*?([0-9.]+%)$</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230619 19:06:38.196" level="INFO">${percent} = ['37.0%']</msg>
+<status status="PASS" starttime="20230619 19:06:38.195" endtime="20230619 19:06:38.196"/>
+</kw>
+<kw name="Set Suite Metadata" library="BuiltIn">
+<arg>Code coverage</arg>
+<arg>${percent[0]} [${cov_filename}.html|HTML Report] | [${cov_filename}|Coverage file]</arg>
+<doc>Sets metadata for the current test suite.</doc>
+<msg timestamp="20230619 19:06:38.197" level="INFO">Set suite metadata 'Code coverage' to value '37.0% [003_configuration.coverage.html|HTML Report] | [003_configuration.coverage|Coverage file]'.</msg>
+<status status="PASS" starttime="20230619 19:06:38.196" endtime="20230619 19:06:38.197"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:37.461" endtime="20230619 19:06:38.197"/>
+</kw>
+<kw name="Remove Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<arg>recursive=True</arg>
+<doc>Removes the directory pointed to by the given ``path``.</doc>
+<msg timestamp="20230619 19:06:38.197" level="INFO" html="true">Removed directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 19:06:38.197" endtime="20230619 19:06:38.198"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:37.460" endtime="20230619 19:06:38.198"/>
+</kw>
+<doc>A series of test cases designed to verify the behavior of various
+configurations, ranging from valid to invalid scenarios.
+It utilizes keywords and resources defined in the
+'resources/keywords.robot' file for test execution.</doc>
+<meta name="Code coverage">37.0% [003_configuration.coverage.html|HTML Report] | [003_configuration.coverage|Coverage file]</meta>
+<status status="PASS" starttime="20230619 19:06:29.921" endtime="20230619 19:06:38.198"/>
+</suite>
+<suite id="s1-s4" name="004 Requests" source="/w/e2e_tests/004_requests.robot">
+<kw name="Suite Setup With Caddy" library="keywords" type="SETUP">
+<doc>Run regular suite setup, start Caddy and wait until it is available</doc>
+<kw name="Suite Setup" library="keywords">
+<doc>Ensure there is a directory for coverage files</doc>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20230619 19:06:38.204" level="INFO" html="true">Created directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 19:06:38.204" endtime="20230619 19:06:38.204"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:38.204" endtime="20230619 19:06:38.204"/>
+</kw>
+<kw name="Expect Caddy Not Ready" library="keywords">
+<doc>Check that Caddy is not ready to accept connections</doc>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${result}</var>
+<arg>GET</arg>
+<arg>${BASE_URL}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 19:06:38.208" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f7e2d50d580&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 19:06:38.205" endtime="20230619 19:06:38.234"/>
+</kw>
+<msg timestamp="20230619 19:06:38.234" level="INFO">${result} = False</msg>
+<status status="PASS" starttime="20230619 19:06:38.204" endtime="20230619 19:06:38.234"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${result}</arg>
+<arg>${False}</arg>
+<arg>msg=Caddy seems to be running already, which is unexpected in this test context.</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230619 19:06:38.234" endtime="20230619 19:06:38.235"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:38.204" endtime="20230619 19:06:38.235"/>
+</kw>
+<kw name="Start Process" library="Process">
+<arg>${CADDY_RUN} examples/Caddyfile.basic-auth</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<arg>alias=caddy</arg>
+<doc>Starts a new process on background.</doc>
+<msg timestamp="20230619 19:06:38.235" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go run --config examples/Caddyfile.basic-auth</msg>
+<status status="PASS" starttime="20230619 19:06:38.235" endtime="20230619 19:06:38.238"/>
+</kw>
+<kw name="Wait Until Caddy Is Ready" library="keywords">
+<doc>Return only when Caddy is ready to accept connections</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>30s</arg>
+<arg>0.5s</arg>
+<arg>GET</arg>
+<arg>${BASE_URL}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 19:06:38.242" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f7e2d4c5430&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 19:06:38.240" endtime="20230619 19:06:38.242"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 19:06:38.744" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f7e2d3d2a90&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 19:06:38.743" endtime="20230619 19:06:38.745"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 19:06:39.247" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f7e2d3d2400&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 19:06:39.245" endtime="20230619 19:06:39.248"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 19:06:39.750" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7f7e2d4c58b0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 19:06:39.748" endtime="20230619 19:06:39.750"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 19:06:41.634" level="INFO">GET Request : url=http://Bob:hiccup@localhost:8080/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Basic Qm9iOmhpY2N1cA=='} 
+ body=None 
+ </msg>
+<msg timestamp="20230619 19:06:41.635" level="INFO">GET Response : url=http://Bob:hiccup@localhost:8080/ 
+ status=200, reason=OK 
+ headers={'Server': 'Caddy', 'Date': 'Mon, 19 Jun 2023 19:06:41 GMT', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<status status="PASS" starttime="20230619 19:06:40.250" endtime="20230619 19:06:41.635"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:38.239" endtime="20230619 19:06:41.635"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:38.239" endtime="20230619 19:06:41.635"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:38.203" endtime="20230619 19:06:41.635"/>
+</kw>
+<test id="s1-s4-t1" name="Test simple upload" line="12">
+<kw name="Upload File" library="keywords">
+<arg>go.mod</arg>
+<doc>Test uploading a single file. The go.mod argument should
+be the absolute path to the file.</doc>
+<kw name="Get Binary File" library="OperatingSystem">
+<var>${file_data}</var>
+<arg>${file_path}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20230619 19:06:41.636" level="INFO" html="true">Getting file '&lt;a href="file:///w/go.mod"&gt;/w/go.mod&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 19:06:41.637" level="INFO">${file_data} = module github.com/madworx/caddy-put-upload
+
+go 1.19
+
+require (
+	github.com/caddyserver/caddy/v2 v2.6.4
+	github.com/stretchr/testify v1.8.1
+)
+
+require (
+	github.com/kr/text v0.2.0 // indirect
+	github.c...</msg>
+<status status="PASS" starttime="20230619 19:06:41.636" endtime="20230619 19:06:41.637"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${file_name}</var>
+<arg>/upload/test.txt</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230619 19:06:41.637" level="INFO">${file_name} = /upload/test.txt</msg>
+<status status="PASS" starttime="20230619 19:06:41.637" endtime="20230619 19:06:41.637"/>
+</kw>
+<kw name="PUT" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${url}${file_name}</arg>
+<arg>data=${file_data}</arg>
+<arg>expected_status=${expected_status}</arg>
+<doc>Sends a PUT request.</doc>
+<msg timestamp="20230619 19:06:41.640" level="INFO">PUT Request : url=http://Bob:hiccup@localhost:8080//upload/test.txt 
+ path_url=//upload/test.txt 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '6839', 'Authorization': 'Basic Qm9iOmhpY2N1cA=='} 
+ body=b'module github.com/madworx/caddy-put-upload\n\ngo 1.19\n\nrequire (\n\tgithub.com/caddyserver/caddy/v2 v2.6.4\n\tgithub.com/stretchr/testify v1.8.1\n)\n\nrequire (\n\tgithub.com/kr/text v0.2.0 // indirect\n\tgithub.com/rogpeppe/go-internal v1.10.0 // indirect\n)\n\nrequire (\n\tfilippo.io/edwards25519 v1.0.0 // indirect\n\tgithub.com/AndreasBriese/bbloom v0.0.0-20190825152654-46b345b51c96 // indirect\n\tgithub.com/BurntSushi/toml v1.2.1 // indirect\n\tgithub.com/Masterminds/goutils v1.1.1 // indirect\n\tgithub.com/Masterminds/semver/v3 v3.2.0 // indirect\n\tgithub.com/Masterminds/sprig/v3 v3.2.3 // indirect\n\tgithub.com/Microsoft/go-winio v0.6.0 // indirect\n\tgithub.com/alecthomas/chroma/v2 v2.5.0 // indirect\n\tgithub.com/antlr/antlr4/runtime/Go/antlr v1.4.10 // indirect\n\tgithub.com/aryann/difflib v0.0.0-20210328193216-ff5ff6dc229b // indirect\n\tgithub.com/beorn7/perks v1.0.1 // indirect\n\tgithub.com/caddyserver/certmagic v0.17.2 // indirect\n\tgithub.com/cenkalti/backoff/v4 v4.1.2 // indirect\n\tgithub.com/cespare/xxhash v1.1.0 // indirect\n\tgithub.com/cespare/xxhash/v2 v2.1.2 // indirect\n\tgithub.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect\n\tgithub.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect\n\tgithub.com/davecgh/go-spew v1.1.1 // indirect\n\tgithub.com/dgraph-io/badger v1.6.2 // indirect\n\tgithub.com/dgraph-io/badger/v2 v2.2007.4 // indirect\n\tgithub.com/dgraph-io/ristretto v0.1.0 // indirect\n\tgithub.com/dgryski/go-farm v0.0.0-20200201041132-a6ae2369ad13 // indirect\n\tgithub.com/dlclark/regexp2 v1.7.0 // indirect\n\tgithub.com/dustin/go-humanize v1.0.1 // indirect\n\tgithub.com/felixge/httpsnoop v1.0.3 // indirect\n\tgithub.com/fxamacker/cbor/v2 v2.4.0 // indirect\n\tgithub.com/go-chi/chi v4.1.2+incompatible // indirect\n\tgithub.com/go-kit/kit v0.10.0 // indirect\n\tgithub.com/go-logfmt/logfmt v0.5.1 // indirect\n\tgithub.com/go-logr/logr v1.2.3 // indirect\n\tgithub.com/go-logr/stdr v1.2.2 // indirect\n\tgithub.com/go-sql-driver/mysql v1.6.0 // indirect\n\tgithub.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0 // indirect\n\tgithub.com/golang/glog v1.0.0 // indirect\n\tgithub.com/golang/mock v1.6.0 // indirect\n\tgithub.com/golang/protobuf v1.5.2 // indirect\n\tgithub.com/golang/snappy v0.0.4 // indirect\n\tgithub.com/google/cel-go v0.13.0 // indirect\n\tgithub.com/google/pprof v0.0.0-20210407192527-94a9f03dee38 // indirect\n\tgithub.com/google/uuid v1.3.0 // indirect\n\tgithub.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect\n\tgithub.com/huandu/xstrings v1.3.3 // indirect\n\tgithub.com/imdario/mergo v0.3.12 // indirect\n\tgithub.com/inconshreveable/mousetrap v1.0.1 // indirect\n\tgithub.com/jackc/chunkreader/v2 v2.0.1 // indirect\n\tgithub.com/jackc/pgconn v1.13.0 // indirect\n\tgithub.com/jackc/pgio v1.0.0 // indirect\n\tgithub.com/jackc/pgpassfile v1.0.0 // indirect\n\tgithub.com/jackc/pgproto3/v2 v2.3.1 // indirect\n\tgithub.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect\n\tgithub.com/jackc/pgtype v1.12.0 // indirect\n\tgithub.com/jackc/pgx/v4 v4.17.2 // indirect\n\tgithub.com/klauspost/compress v1.15.15 // indirect\n\tgithub.com/klauspost/cpuid/v2 v2.2.3 // indirect\n\tgithub.com/libdns/libdns v0.2.1 // indirect\n\tgithub.com/manifoldco/promptui v0.9.0 // indirect\n\tgithub.com/mattn/go-colorable v0.1.8 // indirect\n\tgithub.com/mattn/go-isatty v0.0.13 // indirect\n\tgithub.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect\n\tgithub.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect\n\tgithub.com/mholt/acmez v1.1.0 // indirect\n\tgithub.com/micromdm/scep/v2 v2.1.0 // indirect\n\tgithub.com/miekg/dns v1.1.50 // indirect\n\tgithub.com/mitchellh/copystructure v1.2.0 // indirect\n\tgithub.com/mitchellh/go-ps v1.0.0 // indirect\n\tgithub.com/mitchellh/reflectwalk v1.0.2 // indirect\n\tgithub.com/onsi/ginkgo/v2 v2.2.0 // indirect\n\tgithub.com/pkg/errors v0.9.1 // indirect\n\tgithub.com/pmezard/go-difflib v1.0.0 // indirect\n\tgithub.com/prometheus/client_golang v1.14.0 // indirect\n\tgithub.com/prometheus/client_model v0.3.0 // indirect\n\tgithub.com/prometheus/common v0.37.0 // indirect\n\tgithub.com/prometheus/procfs v0.8.0 // indirect\n\tgithub.com/quic-go/qpack v0.4.0 // indirect\n\tgithub.com/quic-go/qtls-go1-18 v0.2.0 // indirect\n\tgithub.com/quic-go/qtls-go1-19 v0.2.0 // indirect\n\tgithub.com/quic-go/qtls-go1-20 v0.1.0 // indirect\n\tgithub.com/quic-go/quic-go v0.32.0 // indirect\n\tgithub.com/rs/xid v1.4.0 // indirect\n\tgithub.com/russross/blackfriday/v2 v2.1.0 // indirect\n\tgithub.com/shopspring/decimal v1.2.0 // indirect\n\tgithub.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect\n\tgithub.com/sirupsen/logrus v1.9.0 // indirect\n\tgithub.com/slackhq/nebula v1.6.1 // indirect\n\tgithub.com/smallstep/certificates v0.23.2 // indirect\n\tgithub.com/smallstep/nosql v0.5.0 // indirect\n\tgithub.com/smallstep/truststore v0.12.1 // indirect\n\tgithub.com/spf13/cast v1.4.1 // indirect\n\tgithub.com/spf13/cobra v1.6.1 // indirect\n\tgithub.com/spf13/pflag v1.0.5 // indirect\n\tgithub.com/stoewer/go-strcase v1.2.0 // indirect\n\tgithub.com/tailscale/tscert v0.0.0-20230124224810-c6dc1f4049b2 // indirect\n\tgithub.com/urfave/cli v1.22.12 // indirect\n\tgithub.com/x448/float16 v0.8.4 // indirect\n\tgithub.com/yuin/goldmark v1.5.4 // indirect\n\tgithub.com/yuin/goldmark-highlighting/v2 v2.0.0-20220924101305-151362477c87 // indirect\n\tgo.etcd.io/bbolt v1.3.6 // indirect\n\tgo.mozilla.org/pkcs7 v0.0.0-20210826202110-33d05740a352 // indirect\n\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.39.0 // indirect\n\tgo.opentelemetry.io/otel v1.13.0 // indirect\n\tgo.opentelemetry.io/otel/exporters/otlp/internal/retry v1.4.0 // indirect\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace v1.4.0 // indirect\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.4.0 // indirect\n\tgo.opentelemetry.io/otel/metric v0.36.0 // indirect\n\tgo.opentelemetry.io/otel/sdk v1.13.0 // indirect\n\tgo.opentelemetry.io/otel/trace v1.13.0 // indirect\n\tgo.opentelemetry.io/proto/otlp v0.12.0 // indirect\n\tgo.step.sm/cli-utils v0.7.5 // indirect\n\tgo.step.sm/crypto v0.23.2 // indirect\n\tgo.step.sm/linkedca v0.19.0 // indirect\n\tgo.uber.org/atomic v1.9.0 // indirect\n\tgo.uber.org/multierr v1.6.0 // indirect\n\tgo.uber.org/zap v1.24.0 // indirect\n\tgolang.org/x/crypto v0.5.0 // indirect\n\tgolang.org/x/exp v0.0.0-20221205204356-47842c84f3db // indirect\n\tgolang.org/x/mod v0.10.0 // indirect\n\tgolang.org/x/net v0.10.0 // indirect\n\tgolang.org/x/sync v0.2.0 // indirect\n\tgolang.org/x/sys v0.8.0 // indirect\n\tgolang.org/x/term v0.8.0 // indirect\n\tgolang.org/x/text v0.9.0 // indirect\n\tgolang.org/x/tools v0.9.3\n\tgoogle.golang.org/genproto v0.0.0-20230202175211-008b39050e57 // indirect\n\tgoogle.golang.org/grpc v1.52.3 // indirect\n\tgoogle.golang.org/protobuf v1.28.1 // indirect\n\tgopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect\n\tgopkg.in/square/go-jose.v2 v2.6.0 // indirect\n\tgopkg.in/yaml.v3 v3.0.1 // indirect\n\thowett.net/plist v1.0.0 // indirect\n)\n' 
+ </msg>
+<msg timestamp="20230619 19:06:41.640" level="INFO">PUT Response : url=http://Bob:hiccup@localhost:8080//upload/test.txt 
+ status=201, reason=Created 
+ headers={'Server': 'Caddy', 'Date': 'Mon, 19 Jun 2023 19:06:41 GMT', 'Content-Length': '44', 'Content-Type': 'text/plain; charset=utf-8'} 
+ body=File /upload/test.txt created successfully.
+ 
+ </msg>
+<msg timestamp="20230619 19:06:41.640" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:41.637" endtime="20230619 19:06:41.640"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230619 19:06:41.641" level="INFO">&lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:41.641" endtime="20230619 19:06:41.641"/>
+</kw>
+<if>
+<branch type="IF" condition="${text_expected} == True">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>File ${file_name} created successfully.\n</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20230619 19:06:41.641" endtime="20230619 19:06:41.642"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.641" endtime="20230619 19:06:41.642"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:41.641" endtime="20230619 19:06:41.642"/>
+</if>
+<status status="PASS" starttime="20230619 19:06:41.636" endtime="20230619 19:06:41.642"/>
+</kw>
+<doc>Simple uploads of a file should work</doc>
+<status status="PASS" starttime="20230619 19:06:41.635" endtime="20230619 19:06:41.642"/>
+</test>
+<test id="s1-s4-t2" name="Unauthenticated upload should fail" line="16">
+<kw name="Upload File" library="keywords">
+<arg>go.mod</arg>
+<arg>http://localhost:8080/</arg>
+<arg>expected_status=401</arg>
+<arg>text_expected=False</arg>
+<doc>Test uploading a single file. The go.mod argument should
+be the absolute path to the file.</doc>
+<kw name="Get Binary File" library="OperatingSystem">
+<var>${file_data}</var>
+<arg>${file_path}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20230619 19:06:41.644" level="INFO" html="true">Getting file '&lt;a href="file:///w/go.mod"&gt;/w/go.mod&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 19:06:41.644" level="INFO">${file_data} = module github.com/madworx/caddy-put-upload
+
+go 1.19
+
+require (
+	github.com/caddyserver/caddy/v2 v2.6.4
+	github.com/stretchr/testify v1.8.1
+)
+
+require (
+	github.com/kr/text v0.2.0 // indirect
+	github.c...</msg>
+<status status="PASS" starttime="20230619 19:06:41.644" endtime="20230619 19:06:41.644"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${file_name}</var>
+<arg>/upload/test.txt</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230619 19:06:41.645" level="INFO">${file_name} = /upload/test.txt</msg>
+<status status="PASS" starttime="20230619 19:06:41.644" endtime="20230619 19:06:41.645"/>
+</kw>
+<kw name="PUT" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${url}${file_name}</arg>
+<arg>data=${file_data}</arg>
+<arg>expected_status=${expected_status}</arg>
+<doc>Sends a PUT request.</doc>
+<msg timestamp="20230619 19:06:41.647" level="INFO">PUT Request : url=http://localhost:8080//upload/test.txt 
+ path_url=//upload/test.txt 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '6839'} 
+ body=b'module github.com/madworx/caddy-put-upload\n\ngo 1.19\n\nrequire (\n\tgithub.com/caddyserver/caddy/v2 v2.6.4\n\tgithub.com/stretchr/testify v1.8.1\n)\n\nrequire (\n\tgithub.com/kr/text v0.2.0 // indirect\n\tgithub.com/rogpeppe/go-internal v1.10.0 // indirect\n)\n\nrequire (\n\tfilippo.io/edwards25519 v1.0.0 // indirect\n\tgithub.com/AndreasBriese/bbloom v0.0.0-20190825152654-46b345b51c96 // indirect\n\tgithub.com/BurntSushi/toml v1.2.1 // indirect\n\tgithub.com/Masterminds/goutils v1.1.1 // indirect\n\tgithub.com/Masterminds/semver/v3 v3.2.0 // indirect\n\tgithub.com/Masterminds/sprig/v3 v3.2.3 // indirect\n\tgithub.com/Microsoft/go-winio v0.6.0 // indirect\n\tgithub.com/alecthomas/chroma/v2 v2.5.0 // indirect\n\tgithub.com/antlr/antlr4/runtime/Go/antlr v1.4.10 // indirect\n\tgithub.com/aryann/difflib v0.0.0-20210328193216-ff5ff6dc229b // indirect\n\tgithub.com/beorn7/perks v1.0.1 // indirect\n\tgithub.com/caddyserver/certmagic v0.17.2 // indirect\n\tgithub.com/cenkalti/backoff/v4 v4.1.2 // indirect\n\tgithub.com/cespare/xxhash v1.1.0 // indirect\n\tgithub.com/cespare/xxhash/v2 v2.1.2 // indirect\n\tgithub.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect\n\tgithub.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect\n\tgithub.com/davecgh/go-spew v1.1.1 // indirect\n\tgithub.com/dgraph-io/badger v1.6.2 // indirect\n\tgithub.com/dgraph-io/badger/v2 v2.2007.4 // indirect\n\tgithub.com/dgraph-io/ristretto v0.1.0 // indirect\n\tgithub.com/dgryski/go-farm v0.0.0-20200201041132-a6ae2369ad13 // indirect\n\tgithub.com/dlclark/regexp2 v1.7.0 // indirect\n\tgithub.com/dustin/go-humanize v1.0.1 // indirect\n\tgithub.com/felixge/httpsnoop v1.0.3 // indirect\n\tgithub.com/fxamacker/cbor/v2 v2.4.0 // indirect\n\tgithub.com/go-chi/chi v4.1.2+incompatible // indirect\n\tgithub.com/go-kit/kit v0.10.0 // indirect\n\tgithub.com/go-logfmt/logfmt v0.5.1 // indirect\n\tgithub.com/go-logr/logr v1.2.3 // indirect\n\tgithub.com/go-logr/stdr v1.2.2 // indirect\n\tgithub.com/go-sql-driver/mysql v1.6.0 // indirect\n\tgithub.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0 // indirect\n\tgithub.com/golang/glog v1.0.0 // indirect\n\tgithub.com/golang/mock v1.6.0 // indirect\n\tgithub.com/golang/protobuf v1.5.2 // indirect\n\tgithub.com/golang/snappy v0.0.4 // indirect\n\tgithub.com/google/cel-go v0.13.0 // indirect\n\tgithub.com/google/pprof v0.0.0-20210407192527-94a9f03dee38 // indirect\n\tgithub.com/google/uuid v1.3.0 // indirect\n\tgithub.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect\n\tgithub.com/huandu/xstrings v1.3.3 // indirect\n\tgithub.com/imdario/mergo v0.3.12 // indirect\n\tgithub.com/inconshreveable/mousetrap v1.0.1 // indirect\n\tgithub.com/jackc/chunkreader/v2 v2.0.1 // indirect\n\tgithub.com/jackc/pgconn v1.13.0 // indirect\n\tgithub.com/jackc/pgio v1.0.0 // indirect\n\tgithub.com/jackc/pgpassfile v1.0.0 // indirect\n\tgithub.com/jackc/pgproto3/v2 v2.3.1 // indirect\n\tgithub.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect\n\tgithub.com/jackc/pgtype v1.12.0 // indirect\n\tgithub.com/jackc/pgx/v4 v4.17.2 // indirect\n\tgithub.com/klauspost/compress v1.15.15 // indirect\n\tgithub.com/klauspost/cpuid/v2 v2.2.3 // indirect\n\tgithub.com/libdns/libdns v0.2.1 // indirect\n\tgithub.com/manifoldco/promptui v0.9.0 // indirect\n\tgithub.com/mattn/go-colorable v0.1.8 // indirect\n\tgithub.com/mattn/go-isatty v0.0.13 // indirect\n\tgithub.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect\n\tgithub.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect\n\tgithub.com/mholt/acmez v1.1.0 // indirect\n\tgithub.com/micromdm/scep/v2 v2.1.0 // indirect\n\tgithub.com/miekg/dns v1.1.50 // indirect\n\tgithub.com/mitchellh/copystructure v1.2.0 // indirect\n\tgithub.com/mitchellh/go-ps v1.0.0 // indirect\n\tgithub.com/mitchellh/reflectwalk v1.0.2 // indirect\n\tgithub.com/onsi/ginkgo/v2 v2.2.0 // indirect\n\tgithub.com/pkg/errors v0.9.1 // indirect\n\tgithub.com/pmezard/go-difflib v1.0.0 // indirect\n\tgithub.com/prometheus/client_golang v1.14.0 // indirect\n\tgithub.com/prometheus/client_model v0.3.0 // indirect\n\tgithub.com/prometheus/common v0.37.0 // indirect\n\tgithub.com/prometheus/procfs v0.8.0 // indirect\n\tgithub.com/quic-go/qpack v0.4.0 // indirect\n\tgithub.com/quic-go/qtls-go1-18 v0.2.0 // indirect\n\tgithub.com/quic-go/qtls-go1-19 v0.2.0 // indirect\n\tgithub.com/quic-go/qtls-go1-20 v0.1.0 // indirect\n\tgithub.com/quic-go/quic-go v0.32.0 // indirect\n\tgithub.com/rs/xid v1.4.0 // indirect\n\tgithub.com/russross/blackfriday/v2 v2.1.0 // indirect\n\tgithub.com/shopspring/decimal v1.2.0 // indirect\n\tgithub.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect\n\tgithub.com/sirupsen/logrus v1.9.0 // indirect\n\tgithub.com/slackhq/nebula v1.6.1 // indirect\n\tgithub.com/smallstep/certificates v0.23.2 // indirect\n\tgithub.com/smallstep/nosql v0.5.0 // indirect\n\tgithub.com/smallstep/truststore v0.12.1 // indirect\n\tgithub.com/spf13/cast v1.4.1 // indirect\n\tgithub.com/spf13/cobra v1.6.1 // indirect\n\tgithub.com/spf13/pflag v1.0.5 // indirect\n\tgithub.com/stoewer/go-strcase v1.2.0 // indirect\n\tgithub.com/tailscale/tscert v0.0.0-20230124224810-c6dc1f4049b2 // indirect\n\tgithub.com/urfave/cli v1.22.12 // indirect\n\tgithub.com/x448/float16 v0.8.4 // indirect\n\tgithub.com/yuin/goldmark v1.5.4 // indirect\n\tgithub.com/yuin/goldmark-highlighting/v2 v2.0.0-20220924101305-151362477c87 // indirect\n\tgo.etcd.io/bbolt v1.3.6 // indirect\n\tgo.mozilla.org/pkcs7 v0.0.0-20210826202110-33d05740a352 // indirect\n\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.39.0 // indirect\n\tgo.opentelemetry.io/otel v1.13.0 // indirect\n\tgo.opentelemetry.io/otel/exporters/otlp/internal/retry v1.4.0 // indirect\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace v1.4.0 // indirect\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.4.0 // indirect\n\tgo.opentelemetry.io/otel/metric v0.36.0 // indirect\n\tgo.opentelemetry.io/otel/sdk v1.13.0 // indirect\n\tgo.opentelemetry.io/otel/trace v1.13.0 // indirect\n\tgo.opentelemetry.io/proto/otlp v0.12.0 // indirect\n\tgo.step.sm/cli-utils v0.7.5 // indirect\n\tgo.step.sm/crypto v0.23.2 // indirect\n\tgo.step.sm/linkedca v0.19.0 // indirect\n\tgo.uber.org/atomic v1.9.0 // indirect\n\tgo.uber.org/multierr v1.6.0 // indirect\n\tgo.uber.org/zap v1.24.0 // indirect\n\tgolang.org/x/crypto v0.5.0 // indirect\n\tgolang.org/x/exp v0.0.0-20221205204356-47842c84f3db // indirect\n\tgolang.org/x/mod v0.10.0 // indirect\n\tgolang.org/x/net v0.10.0 // indirect\n\tgolang.org/x/sync v0.2.0 // indirect\n\tgolang.org/x/sys v0.8.0 // indirect\n\tgolang.org/x/term v0.8.0 // indirect\n\tgolang.org/x/text v0.9.0 // indirect\n\tgolang.org/x/tools v0.9.3\n\tgoogle.golang.org/genproto v0.0.0-20230202175211-008b39050e57 // indirect\n\tgoogle.golang.org/grpc v1.52.3 // indirect\n\tgoogle.golang.org/protobuf v1.28.1 // indirect\n\tgopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect\n\tgopkg.in/square/go-jose.v2 v2.6.0 // indirect\n\tgopkg.in/yaml.v3 v3.0.1 // indirect\n\thowett.net/plist v1.0.0 // indirect\n)\n' 
+ </msg>
+<msg timestamp="20230619 19:06:41.647" level="INFO">PUT Response : url=http://localhost:8080//upload/test.txt 
+ status=401, reason=Unauthorized 
+ headers={'Server': 'Caddy', 'Www-Authenticate': 'Basic realm="restricted"', 'Date': 'Mon, 19 Jun 2023 19:06:41 GMT', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20230619 19:06:41.647" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:41.645" endtime="20230619 19:06:41.647"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230619 19:06:41.647" level="INFO">&lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:41.647" endtime="20230619 19:06:41.647"/>
+</kw>
+<if>
+<branch type="IF" condition="${text_expected} == True">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>File ${file_name} created successfully.\n</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:41.648" endtime="20230619 19:06:41.648"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:41.647" endtime="20230619 19:06:41.648"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:41.647" endtime="20230619 19:06:41.648"/>
+</if>
+<status status="PASS" starttime="20230619 19:06:41.644" endtime="20230619 19:06:41.648"/>
+</kw>
+<doc>Unauthenticated uploads should fail</doc>
+<status status="PASS" starttime="20230619 19:06:41.643" endtime="20230619 19:06:41.648"/>
+</test>
+<test id="s1-s4-t3" name="Non PUT should be ignored by module" line="20">
+<kw name="Wait Until Caddy Is Ready" library="keywords">
+<doc>Return only when Caddy is ready to accept connections</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>30s</arg>
+<arg>0.5s</arg>
+<arg>GET</arg>
+<arg>${BASE_URL}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 19:06:41.651" level="INFO">GET Request : url=http://Bob:hiccup@localhost:8080/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Basic Qm9iOmhpY2N1cA=='} 
+ body=None 
+ </msg>
+<msg timestamp="20230619 19:06:41.651" level="INFO">GET Response : url=http://Bob:hiccup@localhost:8080/ 
+ status=200, reason=OK 
+ headers={'Server': 'Caddy', 'Date': 'Mon, 19 Jun 2023 19:06:41 GMT', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<status status="PASS" starttime="20230619 19:06:41.649" endtime="20230619 19:06:41.651"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.649" endtime="20230619 19:06:41.651"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.649" endtime="20230619 19:06:41.651"/>
+</kw>
+<doc>Non-PUT operations should be ignored by the module
+(this is to improve coverage)</doc>
+<status status="PASS" starttime="20230619 19:06:41.648" endtime="20230619 19:06:41.651"/>
+</test>
+<kw name="Suite Teardown With Caddy" library="keywords" type="TEARDOWN">
+<doc>Perform a graceful shutdown if Caddy and run the regular suite teardown</doc>
+<kw name="Send Signal To Process" library="Process">
+<arg>SIGINT</arg>
+<arg>handle=caddy</arg>
+<arg>group=True</arg>
+<doc>Sends the given ``signal`` to the specified process.</doc>
+<msg timestamp="20230619 19:06:41.652" level="INFO">Sending signal SIGINT (2).</msg>
+<status status="PASS" starttime="20230619 19:06:41.652" endtime="20230619 19:06:41.653"/>
+</kw>
+<kw name="Wait For Process" library="Process">
+<var>${result}</var>
+<arg>timeout=10s</arg>
+<arg>on_timeout=terminate</arg>
+<doc>Waits for the process to complete or to reach the given timeout.</doc>
+<msg timestamp="20230619 19:06:41.653" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:41.754" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:41.754" level="INFO">${result} = &lt;result object with rc -2&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:41.653" endtime="20230619 19:06:41.754"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230619 19:06:41.755" level="INFO">{"level":"info","ts":1687201600.0623853,"msg":"using provided configuration","config_file":"examples/Caddyfile.basic-auth","config_adapter":""}
+{"level":"info","ts":1687201600.064001,"logger":"admin","msg":"admin endpoint started","address":"localhost:2019","enforce_origin":false,"origins":["//localhost:2019","//[::1]:2019","//127.0.0.1:2019"]}
+{"level":"info","ts":1687201600.0642273,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0xc0004fc000"}
+{"level":"info","ts":1687201600.0642562,"logger":"tls","msg":"cleaning storage unit","description":"FileStorage:/w/.local/share/caddy"}
+{"level":"info","ts":1687201600.0642793,"logger":"tls","msg":"finished cleaning storage units"}
+{"level":"info","ts":1687201600.0643024,"logger":"http.log","msg":"server running","name":"srv0","protocols":["h1","h2","h3"]}
+{"level":"info","ts":1687201600.0644224,"msg":"autosaved config (load with --resume flag)","file":"/w/.config/caddy/autosave.json"}
+{"level":"info","ts":1687201600.0644274,"msg":"serving initial configuration"}
+{"level":"info","ts":1687201601.6525323,"msg":"shutting down","signal":"SIGINT"}
+{"level":"warn","ts":1687201601.652595,"msg":"exiting; byeee!! 👋","signal":"SIGINT"}
+{"level":"info","ts":1687201601.6527824,"logger":"tls.cache.maintenance","msg":"stopped background certificate maintenance","cache":"0xc0004fc000"}
+{"level":"info","ts":1687201601.6528175,"logger":"admin","msg":"stopped previous server","address":"localhost:2019"}
+{"level":"info","ts":1687201601.6528218,"msg":"shutdown complete","signal":"SIGINT","exit_code":0}</msg>
+<status status="PASS" starttime="20230619 19:06:41.754" endtime="20230619 19:06:41.755"/>
+</kw>
+<kw name="Suite Teardown" library="keywords">
+<doc>Generate coverage report and remove coverage directory</doc>
+<kw name="Generate Coverage Report" library="keywords">
+<doc>Generate coverage report from generated files</doc>
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/004_requests.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 19:06:41.756" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 19:06:41.756" level="INFO">${suite_filename} = 004_requests.robot</msg>
+<status status="PASS" starttime="20230619 19:06:41.756" endtime="20230619 19:06:41.756"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 19:06:41.756" level="INFO">${suite_name} = 004_requests</msg>
+<msg timestamp="20230619 19:06:41.756" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 19:06:41.756" endtime="20230619 19:06:41.756"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 19:06:41.757" level="INFO">${cov_path} = /w/e2e_tests/results/004_requests.coverage</msg>
+<status status="PASS" starttime="20230619 19:06:41.757" endtime="20230619 19:06:41.757"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 19:06:41.757" endtime="20230619 19:06:41.757"/>
+</return>
+<msg timestamp="20230619 19:06:41.757" level="INFO">${cov_path} = /w/e2e_tests/results/004_requests.coverage</msg>
+<msg timestamp="20230619 19:06:41.757" level="INFO">${cov_filename} = 004_requests.coverage</msg>
+<status status="PASS" starttime="20230619 19:06:41.755" endtime="20230619 19:06:41.757"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${dir_exists}</var>
+<arg>Directory Should Exist</arg>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20230619 19:06:41.758" level="INFO" html="true">Directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20230619 19:06:41.757" endtime="20230619 19:06:41.758"/>
+</kw>
+<msg timestamp="20230619 19:06:41.758" level="INFO">${dir_exists} = True</msg>
+<status status="PASS" starttime="20230619 19:06:41.757" endtime="20230619 19:06:41.758"/>
+</kw>
+<if>
+<branch type="IF" condition="${dir_exists}">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${dir_contents}</var>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20230619 19:06:41.758" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 19:06:41.758" level="INFO">2 files:
+covcounters.6b007adb3d230b7f717346764648bf5a.7948.1687201601652847897
+covmeta.6b007adb3d230b7f717346764648bf5a</msg>
+<msg timestamp="20230619 19:06:41.758" level="INFO">${dir_contents} = ['covcounters.6b007adb3d230b7f717346764648bf5a.7948.1687201601652847897', 'covmeta.6b007adb3d230b7f717346764648bf5a']</msg>
+<status status="PASS" starttime="20230619 19:06:41.758" endtime="20230619 19:06:41.758"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.758" endtime="20230619 19:06:41.758"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir_contents}</var>
+<arg>${None}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:41.759" endtime="20230619 19:06:41.759"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:41.758" endtime="20230619 19:06:41.759"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:41.758" endtime="20230619 19:06:41.759"/>
+</if>
+<if>
+<branch type="IF" condition="${dir_contents}">
+<kw name="Convert Coverage Fragments" library="keywords">
+<arg>${cov_path}</arg>
+<doc>Convert coverage fragments (from a go run/build -cover execution) into
+a single file</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>go tool covdata textfmt -i\=${OUTPUT DIR}/go-coverage -o\=${cov_path}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:41.759" level="INFO">Starting process:
+go tool covdata textfmt -i=/w/e2e_tests/results/go-coverage -o=/w/e2e_tests/results/004_requests.coverage</msg>
+<msg timestamp="20230619 19:06:41.762" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:41.770" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:41.770" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:41.759" endtime="20230619 19:06:41.770"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:41.772" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:41.771" endtime="20230619 19:06:41.772"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.759" endtime="20230619 19:06:41.772"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.759" endtime="20230619 19:06:41.772"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:41.759" endtime="20230619 19:06:41.772"/>
+</if>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go tool cover -html\=${cov_path} -o\=${cov_path}.html</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:41.774" level="INFO">Starting process:
+go tool cover -html=/w/e2e_tests/results/004_requests.coverage -o=/w/e2e_tests/results/004_requests.coverage.html</msg>
+<msg timestamp="20230619 19:06:41.776" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:42.120" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:42.120" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:41.774" endtime="20230619 19:06:42.120"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:42.122" endtime="20230619 19:06:42.122"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:42.121" endtime="20230619 19:06:42.122"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:42.121" endtime="20230619 19:06:42.122"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:42.123" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:42.122" endtime="20230619 19:06:42.123"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:42.123" endtime="20230619 19:06:42.123"/>
+</return>
+<status status="PASS" starttime="20230619 19:06:41.773" endtime="20230619 19:06:42.123"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<var>${result}</var>
+<arg>go tool cover -func\=${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:42.125" level="INFO">Starting process:
+go tool cover -func=/w/e2e_tests/results/004_requests.coverage</msg>
+<msg timestamp="20230619 19:06:42.128" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:06:42.468" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:06:42.469" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:42.125" endtime="20230619 19:06:42.469"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:06:42.470" endtime="20230619 19:06:42.470"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:06:42.469" endtime="20230619 19:06:42.470"/>
+</branch>
+<status status="PASS" starttime="20230619 19:06:42.469" endtime="20230619 19:06:42.470"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:06:42.471" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:42.471" endtime="20230619 19:06:42.471"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:06:42.471" endtime="20230619 19:06:42.472"/>
+</return>
+<msg timestamp="20230619 19:06:42.472" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:42.124" endtime="20230619 19:06:42.472"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${percent}</var>
+<arg>${result.stdout}</arg>
+<arg>total:.*?([0-9.]+%)$</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230619 19:06:42.472" level="INFO">${percent} = ['78.3%']</msg>
+<status status="PASS" starttime="20230619 19:06:42.472" endtime="20230619 19:06:42.472"/>
+</kw>
+<kw name="Set Suite Metadata" library="BuiltIn">
+<arg>Code coverage</arg>
+<arg>${percent[0]} [${cov_filename}.html|HTML Report] | [${cov_filename}|Coverage file]</arg>
+<doc>Sets metadata for the current test suite.</doc>
+<msg timestamp="20230619 19:06:42.473" level="INFO">Set suite metadata 'Code coverage' to value '78.3% [004_requests.coverage.html|HTML Report] | [004_requests.coverage|Coverage file]'.</msg>
+<status status="PASS" starttime="20230619 19:06:42.473" endtime="20230619 19:06:42.473"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.755" endtime="20230619 19:06:42.473"/>
+</kw>
+<kw name="Remove Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<arg>recursive=True</arg>
+<doc>Removes the directory pointed to by the given ``path``.</doc>
+<msg timestamp="20230619 19:06:42.474" level="INFO" html="true">Removed directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 19:06:42.474" endtime="20230619 19:06:42.474"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.755" endtime="20230619 19:06:42.474"/>
+</kw>
+<status status="PASS" starttime="20230619 19:06:41.652" endtime="20230619 19:06:42.474"/>
+</kw>
+<doc>Executes test cases for handling file uploads
+and processing non-PUT operations.</doc>
+<meta name="Code coverage">78.3% [004_requests.coverage.html|HTML Report] | [004_requests.coverage|Coverage file]</meta>
+<status status="PASS" starttime="20230619 19:06:38.199" endtime="20230619 19:06:42.474"/>
+</suite>
+<suite id="s1-s5" name="005 Binaries" source="/w/e2e_tests/005_binaries.robot">
+<test id="s1-s5-t1" name="Build distribution binaries" line="9">
+<kw name="Expect Successful Execution" library="keywords">
+<arg>make dist-all</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:06:42.483" level="INFO">Starting process:
+make dist-all</msg>
+<msg timestamp="20230619 19:06:42.485" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:09:10.316" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:09:10.317" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:06:42.483" endtime="20230619 19:09:10.317"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:09:10.318" endtime="20230619 19:09:10.318"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:09:10.317" endtime="20230619 19:09:10.318"/>
+</branch>
+<status status="PASS" starttime="20230619 19:09:10.317" endtime="20230619 19:09:10.318"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:09:10.319" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:10.318" endtime="20230619 19:09:10.319"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:09:10.319" endtime="20230619 19:09:10.319"/>
+</return>
+<status status="PASS" starttime="20230619 19:06:42.482" endtime="20230619 19:09:10.320"/>
+</kw>
+<doc>Builds the distribution binaries using the
+'make dist-all' command.</doc>
+<status status="PASS" starttime="20230619 19:06:42.481" endtime="20230619 19:09:10.320"/>
+</test>
+<test id="s1-s5-t2" name="Built binaries should run" line="15">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${binary_list}</var>
+<arg>./dist/</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20230619 19:09:10.321" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///w/dist"&gt;/w/dist&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 19:09:10.321" level="INFO">2 files:
+caddy-put-linux-x86_64
+caddy-put-security-linux-x86_64</msg>
+<msg timestamp="20230619 19:09:10.321" level="INFO">${binary_list} = ['caddy-put-linux-x86_64', 'caddy-put-security-linux-x86_64']</msg>
+<status status="PASS" starttime="20230619 19:09:10.321" endtime="20230619 19:09:10.321"/>
+</kw>
+<for flavor="IN">
+<var>${binary}</var>
+<value>@{binary_list}</value>
+<iter>
+<var name="${binary}">caddy-put-linux-x86_64</var>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>./dist/${binary} list-modules</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:09:10.323" level="INFO">Starting process:
+./dist/caddy-put-linux-x86_64 list-modules</msg>
+<msg timestamp="20230619 19:09:10.326" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:09:10.359" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:09:10.359" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:10.323" endtime="20230619 19:09:10.359"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:09:10.361" endtime="20230619 19:09:10.361"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:09:10.359" endtime="20230619 19:09:10.361"/>
+</branch>
+<status status="PASS" starttime="20230619 19:09:10.359" endtime="20230619 19:09:10.361"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:09:10.361" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:10.361" endtime="20230619 19:09:10.361"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:09:10.362" endtime="20230619 19:09:10.362"/>
+</return>
+<status status="PASS" starttime="20230619 19:09:10.323" endtime="20230619 19:09:10.362"/>
+</kw>
+<status status="PASS" starttime="20230619 19:09:10.321" endtime="20230619 19:09:10.362"/>
+</iter>
+<iter>
+<var name="${binary}">caddy-put-security-linux-x86_64</var>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>./dist/${binary} list-modules</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:09:10.364" level="INFO">Starting process:
+./dist/caddy-put-security-linux-x86_64 list-modules</msg>
+<msg timestamp="20230619 19:09:10.366" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:09:10.444" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:09:10.444" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:10.363" endtime="20230619 19:09:10.444"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:09:10.446" endtime="20230619 19:09:10.446"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:09:10.445" endtime="20230619 19:09:10.446"/>
+</branch>
+<status status="PASS" starttime="20230619 19:09:10.445" endtime="20230619 19:09:10.446"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:09:10.447" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:10.446" endtime="20230619 19:09:10.447"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:09:10.447" endtime="20230619 19:09:10.447"/>
+</return>
+<status status="PASS" starttime="20230619 19:09:10.363" endtime="20230619 19:09:10.447"/>
+</kw>
+<status status="PASS" starttime="20230619 19:09:10.362" endtime="20230619 19:09:10.447"/>
+</iter>
+<status status="PASS" starttime="20230619 19:09:10.321" endtime="20230619 19:09:10.447"/>
+</for>
+<doc>Verifies that all the built binaries in the 'dist/'
+subdirectory execute successfully.</doc>
+<status status="PASS" starttime="20230619 19:09:10.320" endtime="20230619 19:09:10.447"/>
+</test>
+<doc>Verifies the build process of distribution binaries and
+ensures that the built binaries execute successfully.</doc>
+<status status="PASS" starttime="20230619 19:06:42.475" endtime="20230619 19:09:10.448"/>
+</suite>
+<suite id="s1-s6" name="006 Summary" source="/w/e2e_tests/006_summary.robot">
+<test id="s1-s6-t1" name="Collate code coverage reports" line="11">
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/006_summary.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 19:09:10.456" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 19:09:10.456" level="INFO">${suite_filename} = 006_summary.robot</msg>
+<status status="PASS" starttime="20230619 19:09:10.455" endtime="20230619 19:09:10.456"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 19:09:10.456" level="INFO">${suite_name} = 006_summary</msg>
+<msg timestamp="20230619 19:09:10.456" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 19:09:10.456" endtime="20230619 19:09:10.456"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 19:09:10.456" level="INFO">${cov_path} = /w/e2e_tests/results/006_summary.coverage</msg>
+<status status="PASS" starttime="20230619 19:09:10.456" endtime="20230619 19:09:10.456"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 19:09:10.456" endtime="20230619 19:09:10.457"/>
+</return>
+<msg timestamp="20230619 19:09:10.457" level="INFO">${cov_path} = /w/e2e_tests/results/006_summary.coverage</msg>
+<msg timestamp="20230619 19:09:10.457" level="INFO">${cov_filename} = 006_summary.coverage</msg>
+<status status="PASS" starttime="20230619 19:09:10.455" endtime="20230619 19:09:10.457"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go run cmd/gocovmerge/gocovmerge.go ${OUTPUT DIR}/*.coverage &gt; ${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:09:10.464" level="INFO">Starting process:
+go run cmd/gocovmerge/gocovmerge.go /w/e2e_tests/results/*.coverage &gt; /w/e2e_tests/results/006_summary.coverage</msg>
+<msg timestamp="20230619 19:09:10.467" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:09:10.721" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:09:10.722" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:10.464" endtime="20230619 19:09:10.722"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:09:10.723" endtime="20230619 19:09:10.723"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:09:10.722" endtime="20230619 19:09:10.723"/>
+</branch>
+<status status="PASS" starttime="20230619 19:09:10.722" endtime="20230619 19:09:10.723"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:09:10.724" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:10.723" endtime="20230619 19:09:10.724"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:09:10.724" endtime="20230619 19:09:10.724"/>
+</return>
+<status status="PASS" starttime="20230619 19:09:10.463" endtime="20230619 19:09:10.724"/>
+</kw>
+<kw name="Generate Coverage Report" library="keywords">
+<doc>Generate coverage report from generated files</doc>
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/006_summary.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 19:09:10.726" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 19:09:10.726" level="INFO">${suite_filename} = 006_summary.robot</msg>
+<status status="PASS" starttime="20230619 19:09:10.725" endtime="20230619 19:09:10.726"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 19:09:10.726" level="INFO">${suite_name} = 006_summary</msg>
+<msg timestamp="20230619 19:09:10.726" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 19:09:10.726" endtime="20230619 19:09:10.726"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 19:09:10.726" level="INFO">${cov_path} = /w/e2e_tests/results/006_summary.coverage</msg>
+<status status="PASS" starttime="20230619 19:09:10.726" endtime="20230619 19:09:10.726"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 19:09:10.727" endtime="20230619 19:09:10.727"/>
+</return>
+<msg timestamp="20230619 19:09:10.727" level="INFO">${cov_path} = /w/e2e_tests/results/006_summary.coverage</msg>
+<msg timestamp="20230619 19:09:10.727" level="INFO">${cov_filename} = 006_summary.coverage</msg>
+<status status="PASS" starttime="20230619 19:09:10.725" endtime="20230619 19:09:10.727"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${dir_exists}</var>
+<arg>Directory Should Exist</arg>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20230619 19:09:10.727" level="FAIL">Directory '/w/e2e_tests/results/go-coverage' does not exist.</msg>
+<status status="FAIL" starttime="20230619 19:09:10.727" endtime="20230619 19:09:10.728"/>
+</kw>
+<msg timestamp="20230619 19:09:10.728" level="INFO">${dir_exists} = False</msg>
+<status status="PASS" starttime="20230619 19:09:10.727" endtime="20230619 19:09:10.728"/>
+</kw>
+<if>
+<branch type="IF" condition="${dir_exists}">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${dir_contents}</var>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<status status="NOT RUN" starttime="20230619 19:09:10.728" endtime="20230619 19:09:10.728"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:09:10.728" endtime="20230619 19:09:10.728"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir_contents}</var>
+<arg>${None}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230619 19:09:10.728" level="INFO">${dir_contents} = None</msg>
+<status status="PASS" starttime="20230619 19:09:10.728" endtime="20230619 19:09:10.728"/>
+</kw>
+<status status="PASS" starttime="20230619 19:09:10.728" endtime="20230619 19:09:10.728"/>
+</branch>
+<status status="PASS" starttime="20230619 19:09:10.728" endtime="20230619 19:09:10.728"/>
+</if>
+<if>
+<branch type="IF" condition="${dir_contents}">
+<kw name="Convert Coverage Fragments" library="keywords">
+<arg>${cov_path}</arg>
+<doc>Convert coverage fragments (from a go run/build -cover execution) into
+a single file</doc>
+<status status="NOT RUN" starttime="20230619 19:09:10.728" endtime="20230619 19:09:10.729"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:09:10.728" endtime="20230619 19:09:10.729"/>
+</branch>
+<status status="PASS" starttime="20230619 19:09:10.728" endtime="20230619 19:09:10.729"/>
+</if>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go tool cover -html\=${cov_path} -o\=${cov_path}.html</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:09:10.730" level="INFO">Starting process:
+go tool cover -html=/w/e2e_tests/results/006_summary.coverage -o=/w/e2e_tests/results/006_summary.coverage.html</msg>
+<msg timestamp="20230619 19:09:10.733" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:09:11.098" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:09:11.098" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:10.730" endtime="20230619 19:09:11.098"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:09:11.099" endtime="20230619 19:09:11.100"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:09:11.098" endtime="20230619 19:09:11.100"/>
+</branch>
+<status status="PASS" starttime="20230619 19:09:11.098" endtime="20230619 19:09:11.100"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:09:11.100" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:11.100" endtime="20230619 19:09:11.100"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:09:11.101" endtime="20230619 19:09:11.101"/>
+</return>
+<status status="PASS" starttime="20230619 19:09:10.730" endtime="20230619 19:09:11.101"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<var>${result}</var>
+<arg>go tool cover -func\=${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 19:09:11.103" level="INFO">Starting process:
+go tool cover -func=/w/e2e_tests/results/006_summary.coverage</msg>
+<msg timestamp="20230619 19:09:11.105" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 19:09:11.438" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 19:09:11.439" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:11.103" endtime="20230619 19:09:11.439"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 19:09:11.440" endtime="20230619 19:09:11.441"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 19:09:11.439" endtime="20230619 19:09:11.441"/>
+</branch>
+<status status="PASS" starttime="20230619 19:09:11.439" endtime="20230619 19:09:11.441"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 19:09:11.441" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:11.441" endtime="20230619 19:09:11.442"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 19:09:11.442" endtime="20230619 19:09:11.442"/>
+</return>
+<msg timestamp="20230619 19:09:11.442" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 19:09:11.102" endtime="20230619 19:09:11.442"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${percent}</var>
+<arg>${result.stdout}</arg>
+<arg>total:.*?([0-9.]+%)$</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230619 19:09:11.443" level="INFO">${percent} = ['82.6%']</msg>
+<status status="PASS" starttime="20230619 19:09:11.442" endtime="20230619 19:09:11.443"/>
+</kw>
+<kw name="Set Suite Metadata" library="BuiltIn">
+<arg>Code coverage</arg>
+<arg>${percent[0]} [${cov_filename}.html|HTML Report] | [${cov_filename}|Coverage file]</arg>
+<doc>Sets metadata for the current test suite.</doc>
+<msg timestamp="20230619 19:09:11.444" level="INFO">Set suite metadata 'Code coverage' to value '82.6% [006_summary.coverage.html|HTML Report] | [006_summary.coverage|Coverage file]'.</msg>
+<status status="PASS" starttime="20230619 19:09:11.443" endtime="20230619 19:09:11.444"/>
+</kw>
+<status status="PASS" starttime="20230619 19:09:10.725" endtime="20230619 19:09:11.444"/>
+</kw>
+<doc>Combine all code coverage profiles into one.</doc>
+<status status="PASS" starttime="20230619 19:09:10.455" endtime="20230619 19:09:11.444"/>
+</test>
+<doc>Aggregate multiple code coverage reports into a single report.
+It leverages the gocovmerge utility, a Go tool that merges multiple
+coverage profiles. The suite utilizes keywords defined in the
+resources/keywords.robot file.</doc>
+<meta name="Code coverage">82.6% [006_summary.coverage.html|HTML Report] | [006_summary.coverage|Coverage file]</meta>
+<status status="PASS" starttime="20230619 19:09:10.450" endtime="20230619 19:09:11.445"/>
+</suite>
+<status status="PASS" starttime="20230619 19:04:39.677" endtime="20230619 19:09:11.447"/>
+</suite>
+<statistics>
+<total>
+<stat pass="15" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="15" fail="0" skip="0" id="s1" name="E2E Tests">E2E Tests</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1" name="001 Source Code">E2E Tests.001 Source Code</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s2" name="002 Unit Tests">E2E Tests.002 Unit Tests</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s3" name="003 Configuration">E2E Tests.003 Configuration</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s4" name="004 Requests">E2E Tests.004 Requests</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s5" name="005 Binaries">E2E Tests.005 Binaries</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s6" name="006 Summary">E2E Tests.006 Summary</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
