@@ -1,0 +1,1849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1 (Python 3.9.2 on linux)" generated="20230619 18:28:49.639" rpa="false" schemaversion="4">
+<suite id="s1" name="E2E Tests" source="/w/e2e_tests">
+<suite id="s1-s1" name="001 Source Code" source="/w/e2e_tests/001_source_code.robot">
+<test id="s1-s1-t1" name="Golang" line="8">
+<kw name="Expect Successful Execution" library="keywords">
+<arg>make lint-go</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:49.747" level="INFO">Starting process:
+make lint-go</msg>
+<msg timestamp="20230619 18:28:49.777" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:49.830" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:49.831" level="INFO">${result} = &lt;result object with rc 2&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:49.747" endtime="20230619 18:28:49.831"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:28:49.833" level="INFO">/bin/bash: line 1: staticcheck: command not found
+make[1]: *** [Makefile:39: .lint-go.done] Error 127</msg>
+<msg timestamp="20230619 18:28:49.834" level="INFO">make[1]: Entering directory '/w'
+staticcheck ./...
+make[1]: Leaving directory '/w'</msg>
+<status status="PASS" starttime="20230619 18:28:49.832" endtime="20230619 18:28:49.834"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:49.831" endtime="20230619 18:28:49.834"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:49.831" endtime="20230619 18:28:49.834"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:49.835" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:49.835" level="FAIL">2 != 0</msg>
+<status status="FAIL" starttime="20230619 18:28:49.834" endtime="20230619 18:28:49.835"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="NOT RUN" starttime="20230619 18:28:49.835" endtime="20230619 18:28:49.835"/>
+</return>
+<status status="FAIL" starttime="20230619 18:28:49.746" endtime="20230619 18:28:49.835"/>
+</kw>
+<doc>Lint Golang code</doc>
+<status status="FAIL" starttime="20230619 18:28:49.744" endtime="20230619 18:28:49.836">2 != 0</status>
+</test>
+<test id="s1-s1-t2" name="Robot Framework" line="12">
+<kw name="Expect Successful Execution" library="keywords">
+<arg>make lint-robot</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:49.839" level="INFO">Starting process:
+make lint-robot</msg>
+<msg timestamp="20230619 18:28:49.842" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:50.532" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:50.532" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:49.839" endtime="20230619 18:28:50.532"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 18:28:50.534" endtime="20230619 18:28:50.534"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:28:50.533" endtime="20230619 18:28:50.534"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:50.533" endtime="20230619 18:28:50.534"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:50.535" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:50.534" endtime="20230619 18:28:50.536"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 18:28:50.536" endtime="20230619 18:28:50.536"/>
+</return>
+<status status="PASS" starttime="20230619 18:28:49.838" endtime="20230619 18:28:50.536"/>
+</kw>
+<doc>Lint Robot Framework code</doc>
+<status status="PASS" starttime="20230619 18:28:49.836" endtime="20230619 18:28:50.536"/>
+</test>
+<test id="s1-s1-t3" name="Python" line="16">
+<kw name="Expect Successful Execution" library="keywords">
+<arg>make lint-python</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:50.539" level="INFO">Starting process:
+make lint-python</msg>
+<msg timestamp="20230619 18:28:50.541" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:52.928" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:52.928" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:50.538" endtime="20230619 18:28:52.928"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="NOT RUN" starttime="20230619 18:28:52.929" endtime="20230619 18:28:52.929"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:28:52.928" endtime="20230619 18:28:52.929"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:52.928" endtime="20230619 18:28:52.929"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:52.930" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:52.930" endtime="20230619 18:28:52.931"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 18:28:52.931" endtime="20230619 18:28:52.931"/>
+</return>
+<status status="PASS" starttime="20230619 18:28:50.538" endtime="20230619 18:28:52.931"/>
+</kw>
+<doc>Lint Python code</doc>
+<status status="PASS" starttime="20230619 18:28:50.536" endtime="20230619 18:28:52.931"/>
+</test>
+<doc>This test suite performs code linting for different languages.</doc>
+<status status="FAIL" starttime="20230619 18:28:49.661" endtime="20230619 18:28:52.932"/>
+</suite>
+<suite id="s1-s2" name="002 Unit Tests" source="/w/e2e_tests/002_unit_tests.robot">
+<kw name="Suite Setup" library="keywords" type="SETUP">
+<doc>Ensure there is a directory for coverage files</doc>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20230619 18:28:52.939" level="INFO" html="true">Created directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 18:28:52.939" endtime="20230619 18:28:52.939"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:52.938" endtime="20230619 18:28:52.939"/>
+</kw>
+<test id="s1-s2-t1" name="Unit tests" line="12">
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/002_unit_tests.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 18:28:52.941" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 18:28:52.941" level="INFO">${suite_filename} = 002_unit_tests.robot</msg>
+<status status="PASS" starttime="20230619 18:28:52.940" endtime="20230619 18:28:52.941"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 18:28:52.941" level="INFO">${suite_name} = 002_unit_tests</msg>
+<msg timestamp="20230619 18:28:52.941" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 18:28:52.941" endtime="20230619 18:28:52.941"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 18:28:52.942" level="INFO">${cov_path} = /w/e2e_tests/results/002_unit_tests.coverage</msg>
+<status status="PASS" starttime="20230619 18:28:52.941" endtime="20230619 18:28:52.942"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 18:28:52.942" endtime="20230619 18:28:52.942"/>
+</return>
+<msg timestamp="20230619 18:28:52.942" level="INFO">${cov_path} = /w/e2e_tests/results/002_unit_tests.coverage</msg>
+<msg timestamp="20230619 18:28:52.942" level="INFO">${cov_filename} = 002_unit_tests.coverage</msg>
+<status status="PASS" starttime="20230619 18:28:52.940" endtime="20230619 18:28:52.942"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>go test ./... -v -coverprofile\=${cov_path} -covermode\=set</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:52.943" level="INFO">Starting process:
+go test ./... -v -coverprofile=/w/e2e_tests/results/002_unit_tests.coverage -covermode=set</msg>
+<msg timestamp="20230619 18:28:52.945" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:52.946" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:52.946" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:52.942" endtime="20230619 18:28:52.946"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${result.stderr}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:28:52.947" level="INFO"/>
+<msg timestamp="20230619 18:28:52.948" level="INFO">/bin/sh: 1: go: not found</msg>
+<status status="PASS" starttime="20230619 18:28:52.947" endtime="20230619 18:28:52.948"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:52.949" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:52.949" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:28:52.948" endtime="20230619 18:28:52.949"/>
+</kw>
+<doc>Execute golang unit tests</doc>
+<status status="FAIL" starttime="20230619 18:28:52.939" endtime="20230619 18:28:52.949">127 != 0</status>
+</test>
+<test id="s1-s2-t2" name="Failing unit tests should be detected" line="20">
+<kw name="Copy File" library="OperatingSystem">
+<arg>e2e_tests/resources/test_fail.go</arg>
+<arg>fail_test.go</arg>
+<doc>Copies the source file into the destination.</doc>
+<msg timestamp="20230619 18:28:52.951" level="INFO" html="true">Copied file from '&lt;a href="file:///w/e2e_tests/resources/test_fail.go"&gt;/w/e2e_tests/resources/test_fail.go&lt;/a&gt;' to '&lt;a href="file:///w/fail_test.go"&gt;/w/fail_test.go&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 18:28:52.950" endtime="20230619 18:28:52.951"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>go test ./... -v</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:52.952" level="INFO">Starting process:
+go test ./... -v</msg>
+<msg timestamp="20230619 18:28:52.954" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:52.954" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:52.954" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:52.951" endtime="20230619 18:28:52.954"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${result.stderr}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:28:52.956" level="INFO"/>
+<msg timestamp="20230619 18:28:52.956" level="INFO">/bin/sh: 1: go: not found</msg>
+<status status="PASS" starttime="20230619 18:28:52.955" endtime="20230619 18:28:52.956"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:52.957" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:52.957" level="FAIL">127 != 1</msg>
+<status status="FAIL" starttime="20230619 18:28:52.956" endtime="20230619 18:28:52.957"/>
+</kw>
+<kw name="Remove File" library="OperatingSystem" type="TEARDOWN">
+<arg>fail_test.go</arg>
+<doc>Removes a file with the given path.</doc>
+<msg timestamp="20230619 18:28:52.958" level="INFO" html="true">Removed file '&lt;a href="file:///w/fail_test.go"&gt;/w/fail_test.go&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 18:28:52.958" endtime="20230619 18:28:52.958"/>
+</kw>
+<doc>Ensure that we notice if unit tests start to fail</doc>
+<status status="FAIL" starttime="20230619 18:28:52.950" endtime="20230619 18:28:52.958">127 != 1</status>
+</test>
+<kw name="Suite Teardown" library="keywords" type="TEARDOWN">
+<doc>Generate coverage report and remove coverage directory</doc>
+<kw name="Generate Coverage Report" library="keywords">
+<doc>Generate coverage report from generated files</doc>
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/002_unit_tests.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 18:28:52.960" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 18:28:52.960" level="INFO">${suite_filename} = 002_unit_tests.robot</msg>
+<status status="PASS" starttime="20230619 18:28:52.959" endtime="20230619 18:28:52.960"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 18:28:52.960" level="INFO">${suite_name} = 002_unit_tests</msg>
+<msg timestamp="20230619 18:28:52.960" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 18:28:52.960" endtime="20230619 18:28:52.960"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 18:28:52.961" level="INFO">${cov_path} = /w/e2e_tests/results/002_unit_tests.coverage</msg>
+<status status="PASS" starttime="20230619 18:28:52.960" endtime="20230619 18:28:52.961"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 18:28:52.961" endtime="20230619 18:28:52.961"/>
+</return>
+<msg timestamp="20230619 18:28:52.961" level="INFO">${cov_path} = /w/e2e_tests/results/002_unit_tests.coverage</msg>
+<msg timestamp="20230619 18:28:52.961" level="INFO">${cov_filename} = 002_unit_tests.coverage</msg>
+<status status="PASS" starttime="20230619 18:28:52.959" endtime="20230619 18:28:52.961"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${dir_exists}</var>
+<arg>Directory Should Exist</arg>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20230619 18:28:52.962" level="INFO" html="true">Directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20230619 18:28:52.961" endtime="20230619 18:28:52.962"/>
+</kw>
+<msg timestamp="20230619 18:28:52.962" level="INFO">${dir_exists} = True</msg>
+<status status="PASS" starttime="20230619 18:28:52.961" endtime="20230619 18:28:52.962"/>
+</kw>
+<if>
+<branch type="IF" condition="${dir_exists}">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${dir_contents}</var>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20230619 18:28:52.963" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 18:28:52.963" level="INFO">0 files:
+</msg>
+<msg timestamp="20230619 18:28:52.963" level="INFO">${dir_contents} = []</msg>
+<status status="PASS" starttime="20230619 18:28:52.962" endtime="20230619 18:28:52.963"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:52.962" endtime="20230619 18:28:52.963"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir_contents}</var>
+<arg>${None}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230619 18:28:52.963" endtime="20230619 18:28:52.963"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:28:52.963" endtime="20230619 18:28:52.963"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:52.962" endtime="20230619 18:28:52.963"/>
+</if>
+<if>
+<branch type="IF" condition="${dir_contents}">
+<kw name="Convert Coverage Fragments" library="keywords">
+<arg>${cov_path}</arg>
+<doc>Convert coverage fragments (from a go run/build -cover execution) into
+a single file</doc>
+<status status="NOT RUN" starttime="20230619 18:28:52.963" endtime="20230619 18:28:52.964"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:28:52.963" endtime="20230619 18:28:52.964"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:52.963" endtime="20230619 18:28:52.964"/>
+</if>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go tool cover -html\=${cov_path} -o\=${cov_path}.html</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:52.966" level="INFO">Starting process:
+go tool cover -html=/w/e2e_tests/results/002_unit_tests.coverage -o=/w/e2e_tests/results/002_unit_tests.coverage.html</msg>
+<msg timestamp="20230619 18:28:52.968" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:52.968" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:52.969" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:52.965" endtime="20230619 18:28:52.969"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:28:52.970" level="INFO">/bin/sh: 1: go: not found</msg>
+<msg timestamp="20230619 18:28:52.971" level="INFO"/>
+<status status="PASS" starttime="20230619 18:28:52.970" endtime="20230619 18:28:52.971"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:52.969" endtime="20230619 18:28:52.971"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:52.969" endtime="20230619 18:28:52.971"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:52.972" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:52.972" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:28:52.971" endtime="20230619 18:28:52.972"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 18:28:52.972" endtime="20230619 18:28:52.972"/>
+</return>
+<status status="FAIL" starttime="20230619 18:28:52.965" endtime="20230619 18:28:52.972"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<var>${result}</var>
+<arg>go tool cover -func\=${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:52.974" level="INFO">Starting process:
+go tool cover -func=/w/e2e_tests/results/002_unit_tests.coverage</msg>
+<msg timestamp="20230619 18:28:52.977" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:52.977" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:52.977" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:52.974" endtime="20230619 18:28:52.977"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:28:52.979" level="INFO">/bin/sh: 1: go: not found</msg>
+<msg timestamp="20230619 18:28:52.979" level="INFO"/>
+<status status="PASS" starttime="20230619 18:28:52.978" endtime="20230619 18:28:52.979"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:52.977" endtime="20230619 18:28:52.979"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:52.977" endtime="20230619 18:28:52.979"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:52.980" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:52.980" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:28:52.980" endtime="20230619 18:28:52.980"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 18:28:52.980" endtime="20230619 18:28:52.980"/>
+</return>
+<msg timestamp="20230619 18:28:52.981" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="FAIL" starttime="20230619 18:28:52.973" endtime="20230619 18:28:52.981"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${percent}</var>
+<arg>${result.stdout}</arg>
+<arg>total:.*?([0-9.]+%)$</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230619 18:28:52.982" level="INFO">${percent} = []</msg>
+<status status="PASS" starttime="20230619 18:28:52.981" endtime="20230619 18:28:52.982"/>
+</kw>
+<kw name="Set Suite Metadata" library="BuiltIn">
+<arg>Code coverage</arg>
+<arg>${percent[0]} [${cov_filename}.html|HTML Report] | [${cov_filename}|Coverage file]</arg>
+<doc>Sets metadata for the current test suite.</doc>
+<msg timestamp="20230619 18:28:52.983" level="FAIL">Resolving variable '${percent[0]}' failed: IndexError: list index out of range</msg>
+<status status="FAIL" starttime="20230619 18:28:52.982" endtime="20230619 18:28:52.983"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:52.959" endtime="20230619 18:28:52.983"/>
+</kw>
+<kw name="Remove Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<arg>recursive=True</arg>
+<doc>Removes the directory pointed to by the given ``path``.</doc>
+<msg timestamp="20230619 18:28:52.983" level="INFO" html="true">Removed directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 18:28:52.983" endtime="20230619 18:28:52.983"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:52.959" endtime="20230619 18:28:52.984">Several failures occurred:
+
+1) 127 != 0
+
+2) 127 != 0
+
+3) Resolving variable '${percent[0]}' failed: IndexError: list index out of range</status>
+</kw>
+<doc>Run native unit tests for the golang code and serves to aggregate
+all test results into one report, also generating a coverage report.</doc>
+<status status="FAIL" starttime="20230619 18:28:52.933" endtime="20230619 18:28:52.984">Suite teardown failed:
+Several failures occurred:
+
+1) 127 != 0
+
+2) 127 != 0
+
+3) Resolving variable '${percent[0]}' failed: IndexError: list index out of range</status>
+</suite>
+<suite id="s1-s3" name="003 Configuration" source="/w/e2e_tests/003_configuration.robot">
+<kw name="Suite Setup" library="keywords" type="SETUP">
+<doc>Ensure there is a directory for coverage files</doc>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20230619 18:28:52.990" level="INFO" html="true">Created directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 18:28:52.990" endtime="20230619 18:28:52.990"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:52.989" endtime="20230619 18:28:52.990"/>
+</kw>
+<test id="s1-s3-t1" name="Example configuration: basic authentication" line="14">
+<kw name="Validate Configuration" library="keywords">
+<arg>examples/Caddyfile.basic-auth</arg>
+<arg>0</arg>
+<doc>Validate if configuration behaves as expected</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${CADDY_VALIDATE} ${file_name}</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:52.992" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go validate --config examples/Caddyfile.basic-auth</msg>
+<msg timestamp="20230619 18:28:52.994" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:52.995" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:52.995" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:52.992" endtime="20230619 18:28:52.995"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:52.996" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:52.996" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:28:52.995" endtime="20230619 18:28:52.997"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${expected_response}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20230619 18:28:52.997" endtime="20230619 18:28:52.997"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:52.991" endtime="20230619 18:28:52.997"/>
+</kw>
+<doc>Test that example configuration with HTTP basic authentication is accepted</doc>
+<status status="FAIL" starttime="20230619 18:28:52.990" endtime="20230619 18:28:52.997">127 != 0</status>
+</test>
+<test id="s1-s3-t2" name="Example configuration: no authentication" line="18">
+<kw name="Validate Configuration" library="keywords">
+<arg>examples/Caddyfile.no-authentication</arg>
+<arg>0</arg>
+<doc>Validate if configuration behaves as expected</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${CADDY_VALIDATE} ${file_name}</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:52.999" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go validate --config examples/Caddyfile.no-authentication</msg>
+<msg timestamp="20230619 18:28:53.002" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:53.002" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:53.003" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:52.999" endtime="20230619 18:28:53.003"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:53.004" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:53.004" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:28:53.003" endtime="20230619 18:28:53.004"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${expected_response}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20230619 18:28:53.004" endtime="20230619 18:28:53.004"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:52.998" endtime="20230619 18:28:53.005"/>
+</kw>
+<doc>Test that example configuration without authentication is accepted</doc>
+<status status="FAIL" starttime="20230619 18:28:52.997" endtime="20230619 18:28:53.005">127 != 0</status>
+</test>
+<test id="s1-s3-t3" name="Invalid configuration: empty" line="22">
+<kw name="Validate Configuration" library="keywords">
+<arg>e2e_tests/resources/Caddyfile.invalid-no-arg</arg>
+<arg>1</arg>
+<arg>Wrong argument count or unexpected line ending after 'http_put_file'</arg>
+<doc>Validate if configuration behaves as expected</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${CADDY_VALIDATE} ${file_name}</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:53.007" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go validate --config e2e_tests/resources/Caddyfile.invalid-no-arg</msg>
+<msg timestamp="20230619 18:28:53.009" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:53.009" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:53.009" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:53.006" endtime="20230619 18:28:53.009"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:53.011" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:53.011" level="FAIL">127 != 1</msg>
+<status status="FAIL" starttime="20230619 18:28:53.010" endtime="20230619 18:28:53.012"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${expected_response}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20230619 18:28:53.012" endtime="20230619 18:28:53.012"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:53.006" endtime="20230619 18:28:53.012"/>
+</kw>
+<doc>Test that an invalid configuration is rejected (no arguments)</doc>
+<status status="FAIL" starttime="20230619 18:28:53.005" endtime="20230619 18:28:53.012">127 != 1</status>
+</test>
+<test id="s1-s3-t4" name="Invalid configuration: structure" line="28">
+<kw name="Validate Configuration" library="keywords">
+<arg>e2e_tests/resources/Caddyfile.invalid-nested-args</arg>
+<arg>1</arg>
+<arg>Wrong argument count or unexpected line ending after 'http_put_file'</arg>
+<doc>Validate if configuration behaves as expected</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${CADDY_VALIDATE} ${file_name}</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:53.014" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go validate --config e2e_tests/resources/Caddyfile.invalid-nested-args</msg>
+<msg timestamp="20230619 18:28:53.016" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:53.016" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:53.017" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:53.013" endtime="20230619 18:28:53.017"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:53.018" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:53.018" level="FAIL">127 != 1</msg>
+<status status="FAIL" starttime="20230619 18:28:53.017" endtime="20230619 18:28:53.018"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${expected_response}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20230619 18:28:53.018" endtime="20230619 18:28:53.018"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:53.013" endtime="20230619 18:28:53.019"/>
+</kw>
+<doc>Test that an invalid configuration is rejected (nested argument)</doc>
+<status status="FAIL" starttime="20230619 18:28:53.012" endtime="20230619 18:28:53.019">127 != 1</status>
+</test>
+<kw name="Suite Teardown" library="keywords" type="TEARDOWN">
+<doc>Generate coverage report and remove coverage directory</doc>
+<kw name="Generate Coverage Report" library="keywords">
+<doc>Generate coverage report from generated files</doc>
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/003_configuration.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 18:28:53.020" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 18:28:53.020" level="INFO">${suite_filename} = 003_configuration.robot</msg>
+<status status="PASS" starttime="20230619 18:28:53.020" endtime="20230619 18:28:53.020"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 18:28:53.021" level="INFO">${suite_name} = 003_configuration</msg>
+<msg timestamp="20230619 18:28:53.021" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 18:28:53.020" endtime="20230619 18:28:53.021"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 18:28:53.021" level="INFO">${cov_path} = /w/e2e_tests/results/003_configuration.coverage</msg>
+<status status="PASS" starttime="20230619 18:28:53.021" endtime="20230619 18:28:53.021"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 18:28:53.021" endtime="20230619 18:28:53.021"/>
+</return>
+<msg timestamp="20230619 18:28:53.022" level="INFO">${cov_path} = /w/e2e_tests/results/003_configuration.coverage</msg>
+<msg timestamp="20230619 18:28:53.022" level="INFO">${cov_filename} = 003_configuration.coverage</msg>
+<status status="PASS" starttime="20230619 18:28:53.020" endtime="20230619 18:28:53.022"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${dir_exists}</var>
+<arg>Directory Should Exist</arg>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20230619 18:28:53.022" level="INFO" html="true">Directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20230619 18:28:53.022" endtime="20230619 18:28:53.023"/>
+</kw>
+<msg timestamp="20230619 18:28:53.023" level="INFO">${dir_exists} = True</msg>
+<status status="PASS" starttime="20230619 18:28:53.022" endtime="20230619 18:28:53.023"/>
+</kw>
+<if>
+<branch type="IF" condition="${dir_exists}">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${dir_contents}</var>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20230619 18:28:53.023" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 18:28:53.023" level="INFO">0 files:
+</msg>
+<msg timestamp="20230619 18:28:53.023" level="INFO">${dir_contents} = []</msg>
+<status status="PASS" starttime="20230619 18:28:53.023" endtime="20230619 18:28:53.023"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:53.023" endtime="20230619 18:28:53.023"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir_contents}</var>
+<arg>${None}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230619 18:28:53.024" endtime="20230619 18:28:53.024"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:28:53.023" endtime="20230619 18:28:53.024"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:53.023" endtime="20230619 18:28:53.024"/>
+</if>
+<if>
+<branch type="IF" condition="${dir_contents}">
+<kw name="Convert Coverage Fragments" library="keywords">
+<arg>${cov_path}</arg>
+<doc>Convert coverage fragments (from a go run/build -cover execution) into
+a single file</doc>
+<status status="NOT RUN" starttime="20230619 18:28:53.024" endtime="20230619 18:28:53.024"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:28:53.024" endtime="20230619 18:28:53.024"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:53.024" endtime="20230619 18:28:53.024"/>
+</if>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go tool cover -html\=${cov_path} -o\=${cov_path}.html</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:53.026" level="INFO">Starting process:
+go tool cover -html=/w/e2e_tests/results/003_configuration.coverage -o=/w/e2e_tests/results/003_configuration.coverage.html</msg>
+<msg timestamp="20230619 18:28:53.029" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:53.029" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:53.029" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:53.026" endtime="20230619 18:28:53.029"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:28:53.031" level="INFO">/bin/sh: 1: go: not found</msg>
+<msg timestamp="20230619 18:28:53.031" level="INFO"/>
+<status status="PASS" starttime="20230619 18:28:53.030" endtime="20230619 18:28:53.031"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:53.030" endtime="20230619 18:28:53.031"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:53.029" endtime="20230619 18:28:53.031"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:53.032" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:53.032" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:28:53.032" endtime="20230619 18:28:53.032"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 18:28:53.032" endtime="20230619 18:28:53.032"/>
+</return>
+<status status="FAIL" starttime="20230619 18:28:53.025" endtime="20230619 18:28:53.033"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<var>${result}</var>
+<arg>go tool cover -func\=${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:28:53.035" level="INFO">Starting process:
+go tool cover -func=/w/e2e_tests/results/003_configuration.coverage</msg>
+<msg timestamp="20230619 18:28:53.037" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:28:53.038" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:28:53.038" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:28:53.035" endtime="20230619 18:28:53.038"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:28:53.040" level="INFO">/bin/sh: 1: go: not found</msg>
+<msg timestamp="20230619 18:28:53.040" level="INFO"/>
+<status status="PASS" starttime="20230619 18:28:53.039" endtime="20230619 18:28:53.040"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:53.038" endtime="20230619 18:28:53.040"/>
+</branch>
+<status status="PASS" starttime="20230619 18:28:53.038" endtime="20230619 18:28:53.040"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:28:53.041" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:28:53.042" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:28:53.041" endtime="20230619 18:28:53.042"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 18:28:53.042" endtime="20230619 18:28:53.042"/>
+</return>
+<msg timestamp="20230619 18:28:53.042" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="FAIL" starttime="20230619 18:28:53.034" endtime="20230619 18:28:53.042"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${percent}</var>
+<arg>${result.stdout}</arg>
+<arg>total:.*?([0-9.]+%)$</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230619 18:28:53.043" level="INFO">${percent} = []</msg>
+<status status="PASS" starttime="20230619 18:28:53.042" endtime="20230619 18:28:53.043"/>
+</kw>
+<kw name="Set Suite Metadata" library="BuiltIn">
+<arg>Code coverage</arg>
+<arg>${percent[0]} [${cov_filename}.html|HTML Report] | [${cov_filename}|Coverage file]</arg>
+<doc>Sets metadata for the current test suite.</doc>
+<msg timestamp="20230619 18:28:53.044" level="FAIL">Resolving variable '${percent[0]}' failed: IndexError: list index out of range</msg>
+<status status="FAIL" starttime="20230619 18:28:53.043" endtime="20230619 18:28:53.044"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:53.020" endtime="20230619 18:28:53.044"/>
+</kw>
+<kw name="Remove Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<arg>recursive=True</arg>
+<doc>Removes the directory pointed to by the given ``path``.</doc>
+<msg timestamp="20230619 18:28:53.044" level="INFO" html="true">Removed directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 18:28:53.044" endtime="20230619 18:28:53.045"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:53.019" endtime="20230619 18:28:53.045">Several failures occurred:
+
+1) 127 != 0
+
+2) 127 != 0
+
+3) Resolving variable '${percent[0]}' failed: IndexError: list index out of range</status>
+</kw>
+<doc>A series of test cases designed to verify the behavior of various
+configurations, ranging from valid to invalid scenarios.
+It utilizes keywords and resources defined in the
+'resources/keywords.robot' file for test execution.</doc>
+<status status="FAIL" starttime="20230619 18:28:52.984" endtime="20230619 18:28:53.045">Suite teardown failed:
+Several failures occurred:
+
+1) 127 != 0
+
+2) 127 != 0
+
+3) Resolving variable '${percent[0]}' failed: IndexError: list index out of range</status>
+</suite>
+<suite id="s1-s4" name="004 Requests" source="/w/e2e_tests/004_requests.robot">
+<kw name="Suite Setup With Caddy" library="keywords" type="SETUP">
+<doc>Run regular suite setup, start Caddy and wait until it is available</doc>
+<kw name="Suite Setup" library="keywords">
+<doc>Ensure there is a directory for coverage files</doc>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20230619 18:28:53.051" level="INFO" html="true">Created directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 18:28:53.051" endtime="20230619 18:28:53.051"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:53.050" endtime="20230619 18:28:53.051"/>
+</kw>
+<kw name="Expect Caddy Not Ready" library="keywords">
+<doc>Check that Caddy is not ready to accept connections</doc>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${result}</var>
+<arg>GET</arg>
+<arg>${BASE_URL}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:53.055" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34477160&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:53.052" endtime="20230619 18:28:53.097"/>
+</kw>
+<msg timestamp="20230619 18:28:53.097" level="INFO">${result} = False</msg>
+<status status="PASS" starttime="20230619 18:28:53.051" endtime="20230619 18:28:53.097"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${result}</arg>
+<arg>${False}</arg>
+<arg>msg=Caddy seems to be running already, which is unexpected in this test context.</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230619 18:28:53.097" endtime="20230619 18:28:53.097"/>
+</kw>
+<status status="PASS" starttime="20230619 18:28:53.051" endtime="20230619 18:28:53.098"/>
+</kw>
+<kw name="Start Process" library="Process">
+<arg>${CADDY_RUN} examples/Caddyfile.basic-auth</arg>
+<arg>shell=True</arg>
+<arg>env:GOCOVERDIR=${OUTPUT DIR}/go-coverage</arg>
+<arg>alias=caddy</arg>
+<doc>Starts a new process on background.</doc>
+<msg timestamp="20230619 18:28:53.098" level="INFO">Starting process:
+go run -cover cmd/caddy/main.go run --config examples/Caddyfile.basic-auth</msg>
+<status status="PASS" starttime="20230619 18:28:53.098" endtime="20230619 18:28:53.101"/>
+</kw>
+<kw name="Wait Until Caddy Is Ready" library="keywords">
+<doc>Return only when Caddy is ready to accept connections</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>30s</arg>
+<arg>0.5s</arg>
+<arg>GET</arg>
+<arg>${BASE_URL}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:53.105" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34382760&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:53.102" endtime="20230619 18:28:53.105"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:53.608" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388550&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:53.606" endtime="20230619 18:28:53.609"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:54.112" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343827c0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:54.109" endtime="20230619 18:28:54.112"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:54.615" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388850&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:54.613" endtime="20230619 18:28:54.615"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:55.118" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34396160&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:55.116" endtime="20230619 18:28:55.118"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:55.621" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34414eb0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:55.619" endtime="20230619 18:28:55.622"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:56.124" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388550&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:56.122" endtime="20230619 18:28:56.125"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:56.627" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343828e0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:56.625" endtime="20230619 18:28:56.628"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:57.130" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343861f0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:57.128" endtime="20230619 18:28:57.133"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:57.635" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34396970&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:57.633" endtime="20230619 18:28:57.636"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:58.138" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388e80&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:58.136" endtime="20230619 18:28:58.139"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:58.641" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343823d0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:58.639" endtime="20230619 18:28:58.642"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:59.145" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34382370&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:59.142" endtime="20230619 18:28:59.145"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:28:59.648" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343883a0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:59.646" endtime="20230619 18:28:59.648"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:00.151" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34396d00&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:00.149" endtime="20230619 18:29:00.151"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:00.654" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34477130&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:00.652" endtime="20230619 18:29:00.654"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:01.157" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343963a0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:01.155" endtime="20230619 18:29:01.158"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:01.660" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388760&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:01.659" endtime="20230619 18:29:01.661"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:02.163" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34382f70&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:02.161" endtime="20230619 18:29:02.164"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:02.667" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc344707c0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:02.664" endtime="20230619 18:29:02.667"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:03.170" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388310&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:03.168" endtime="20230619 18:29:03.170"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:03.673" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34396af0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:03.671" endtime="20230619 18:29:03.673"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:04.176" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc344708e0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:04.174" endtime="20230619 18:29:04.176"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:04.679" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34414ca0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:04.677" endtime="20230619 18:29:04.679"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:05.182" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34477d30&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:05.180" endtime="20230619 18:29:05.183"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:05.685" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343885e0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:05.683" endtime="20230619 18:29:05.685"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:06.188" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34462190&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:06.186" endtime="20230619 18:29:06.188"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:06.691" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388be0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:06.689" endtime="20230619 18:29:06.692"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:07.195" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34477e20&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:07.192" endtime="20230619 18:29:07.195"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:07.697" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34462520&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:07.695" endtime="20230619 18:29:07.698"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:08.201" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34414be0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:08.199" endtime="20230619 18:29:08.201"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:08.704" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34470bb0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:08.702" endtime="20230619 18:29:08.704"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:09.207" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388370&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:09.205" endtime="20230619 18:29:09.207"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:09.710" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc344142e0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:09.708" endtime="20230619 18:29:09.710"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:10.213" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34382670&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:10.211" endtime="20230619 18:29:10.214"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:10.717" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388400&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:10.714" endtime="20230619 18:29:10.717"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:11.220" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34462520&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:11.217" endtime="20230619 18:29:11.220"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:11.723" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3445e100&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:11.721" endtime="20230619 18:29:11.723"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:12.226" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34477ca0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:12.224" endtime="20230619 18:29:12.227"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:12.729" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388400&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:12.727" endtime="20230619 18:29:12.730"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:13.232" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34458400&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:13.230" endtime="20230619 18:29:13.232"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:13.736" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34458e50&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:13.733" endtime="20230619 18:29:13.736"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:14.239" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388d90&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:14.237" endtime="20230619 18:29:14.239"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:14.742" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34462f10&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:14.740" endtime="20230619 18:29:14.742"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:15.245" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3445e700&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:15.243" endtime="20230619 18:29:15.246"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:15.749" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343969a0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:15.746" endtime="20230619 18:29:15.750"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:16.252" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388d30&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:16.250" endtime="20230619 18:29:16.253"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:16.755" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388ee0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:16.753" endtime="20230619 18:29:16.756"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:17.258" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3445e250&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:17.256" endtime="20230619 18:29:17.259"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:17.762" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388310&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:17.760" endtime="20230619 18:29:17.762"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:18.265" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc344621c0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:18.263" endtime="20230619 18:29:18.265"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:18.768" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3445e130&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:18.766" endtime="20230619 18:29:18.768"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:19.272" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3445ebe0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:19.269" endtime="20230619 18:29:19.272"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:19.775" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34462460&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:19.773" endtime="20230619 18:29:19.775"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:20.278" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc343967c0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:20.276" endtime="20230619 18:29:20.278"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:20.781" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34388820&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:20.779" endtime="20230619 18:29:20.781"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:21.295" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34458c40&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:21.282" endtime="20230619 18:29:21.296"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:21.799" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3445eca0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:21.796" endtime="20230619 18:29:21.799"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:22.302" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34462a00&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:22.300" endtime="20230619 18:29:22.302"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:22.806" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc34458e50&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:22.803" endtime="20230619 18:29:22.806"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230619 18:29:23.310" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3517f100&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:29:23.307" endtime="20230619 18:29:23.311"/>
+</kw>
+<msg timestamp="20230619 18:29:23.311" level="FAIL">Keyword 'GET' failed after retrying for 30 seconds. The last error was: ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3517f100&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20230619 18:28:53.102" endtime="20230619 18:29:23.311"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:53.101" endtime="20230619 18:29:23.311"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:28:53.050" endtime="20230619 18:29:23.311"/>
+</kw>
+<test id="s1-s4-t1" name="Test simple upload" line="12">
+<doc>Simple uploads of a file should work</doc>
+<status status="FAIL" starttime="20230619 18:29:23.312" endtime="20230619 18:29:23.312">Parent suite setup failed:
+Keyword 'GET' failed after retrying for 30 seconds. The last error was: ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3517f100&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</test>
+<test id="s1-s4-t2" name="Unauthenticated upload should fail" line="16">
+<doc>Unauthenticated uploads should fail</doc>
+<status status="FAIL" starttime="20230619 18:29:23.313" endtime="20230619 18:29:23.313">Parent suite setup failed:
+Keyword 'GET' failed after retrying for 30 seconds. The last error was: ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3517f100&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</test>
+<test id="s1-s4-t3" name="Non PUT should be ignored by module" line="20">
+<doc>Non-PUT operations should be ignored by the module
+(this is to improve coverage)</doc>
+<status status="FAIL" starttime="20230619 18:29:23.313" endtime="20230619 18:29:23.313">Parent suite setup failed:
+Keyword 'GET' failed after retrying for 30 seconds. The last error was: ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3517f100&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+</test>
+<kw name="Suite Teardown With Caddy" library="keywords" type="TEARDOWN">
+<doc>Perform a graceful shutdown if Caddy and run the regular suite teardown</doc>
+<kw name="Send Signal To Process" library="Process">
+<arg>SIGINT</arg>
+<arg>handle=caddy</arg>
+<arg>group=True</arg>
+<doc>Sends the given ``signal`` to the specified process.</doc>
+<msg timestamp="20230619 18:29:23.315" level="INFO">Sending signal SIGINT (2).</msg>
+<status status="PASS" starttime="20230619 18:29:23.314" endtime="20230619 18:29:23.315"/>
+</kw>
+<kw name="Wait For Process" library="Process">
+<var>${result}</var>
+<arg>timeout=10s</arg>
+<arg>on_timeout=terminate</arg>
+<doc>Waits for the process to complete or to reach the given timeout.</doc>
+<msg timestamp="20230619 18:29:23.315" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:29:23.315" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:29:23.315" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:29:23.315" endtime="20230619 18:29:23.315"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230619 18:29:23.316" level="INFO">/bin/sh: 1: go: not found</msg>
+<status status="PASS" starttime="20230619 18:29:23.316" endtime="20230619 18:29:23.316"/>
+</kw>
+<kw name="Suite Teardown" library="keywords">
+<doc>Generate coverage report and remove coverage directory</doc>
+<kw name="Generate Coverage Report" library="keywords">
+<doc>Generate coverage report from generated files</doc>
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/004_requests.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 18:29:23.318" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 18:29:23.318" level="INFO">${suite_filename} = 004_requests.robot</msg>
+<status status="PASS" starttime="20230619 18:29:23.318" endtime="20230619 18:29:23.318"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 18:29:23.319" level="INFO">${suite_name} = 004_requests</msg>
+<msg timestamp="20230619 18:29:23.319" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 18:29:23.319" endtime="20230619 18:29:23.319"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 18:29:23.319" level="INFO">${cov_path} = /w/e2e_tests/results/004_requests.coverage</msg>
+<status status="PASS" starttime="20230619 18:29:23.319" endtime="20230619 18:29:23.319"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 18:29:23.319" endtime="20230619 18:29:23.320"/>
+</return>
+<msg timestamp="20230619 18:29:23.320" level="INFO">${cov_path} = /w/e2e_tests/results/004_requests.coverage</msg>
+<msg timestamp="20230619 18:29:23.320" level="INFO">${cov_filename} = 004_requests.coverage</msg>
+<status status="PASS" starttime="20230619 18:29:23.317" endtime="20230619 18:29:23.320"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${dir_exists}</var>
+<arg>Directory Should Exist</arg>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20230619 18:29:23.321" level="INFO" html="true">Directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20230619 18:29:23.320" endtime="20230619 18:29:23.321"/>
+</kw>
+<msg timestamp="20230619 18:29:23.321" level="INFO">${dir_exists} = True</msg>
+<status status="PASS" starttime="20230619 18:29:23.320" endtime="20230619 18:29:23.321"/>
+</kw>
+<if>
+<branch type="IF" condition="${dir_exists}">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${dir_contents}</var>
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20230619 18:29:23.321" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 18:29:23.322" level="INFO">0 files:
+</msg>
+<msg timestamp="20230619 18:29:23.322" level="INFO">${dir_contents} = []</msg>
+<status status="PASS" starttime="20230619 18:29:23.321" endtime="20230619 18:29:23.322"/>
+</kw>
+<status status="PASS" starttime="20230619 18:29:23.321" endtime="20230619 18:29:23.322"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir_contents}</var>
+<arg>${None}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230619 18:29:23.322" endtime="20230619 18:29:23.322"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:29:23.322" endtime="20230619 18:29:23.322"/>
+</branch>
+<status status="PASS" starttime="20230619 18:29:23.321" endtime="20230619 18:29:23.322"/>
+</if>
+<if>
+<branch type="IF" condition="${dir_contents}">
+<kw name="Convert Coverage Fragments" library="keywords">
+<arg>${cov_path}</arg>
+<doc>Convert coverage fragments (from a go run/build -cover execution) into
+a single file</doc>
+<status status="NOT RUN" starttime="20230619 18:29:23.322" endtime="20230619 18:29:23.323"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:29:23.322" endtime="20230619 18:29:23.323"/>
+</branch>
+<status status="PASS" starttime="20230619 18:29:23.322" endtime="20230619 18:29:23.323"/>
+</if>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go tool cover -html\=${cov_path} -o\=${cov_path}.html</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:29:23.325" level="INFO">Starting process:
+go tool cover -html=/w/e2e_tests/results/004_requests.coverage -o=/w/e2e_tests/results/004_requests.coverage.html</msg>
+<msg timestamp="20230619 18:29:23.328" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:29:23.329" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:29:23.329" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:29:23.325" endtime="20230619 18:29:23.329"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:29:23.331" level="INFO">/bin/sh: 1: go: not found</msg>
+<msg timestamp="20230619 18:29:23.331" level="INFO"/>
+<status status="PASS" starttime="20230619 18:29:23.330" endtime="20230619 18:29:23.331"/>
+</kw>
+<status status="PASS" starttime="20230619 18:29:23.329" endtime="20230619 18:29:23.331"/>
+</branch>
+<status status="PASS" starttime="20230619 18:29:23.329" endtime="20230619 18:29:23.331"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:29:23.332" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:29:23.332" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:29:23.331" endtime="20230619 18:29:23.332"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 18:29:23.332" endtime="20230619 18:29:23.332"/>
+</return>
+<status status="FAIL" starttime="20230619 18:29:23.324" endtime="20230619 18:29:23.333"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<var>${result}</var>
+<arg>go tool cover -func\=${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:29:23.335" level="INFO">Starting process:
+go tool cover -func=/w/e2e_tests/results/004_requests.coverage</msg>
+<msg timestamp="20230619 18:29:23.338" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:29:23.338" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:29:23.338" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:29:23.335" endtime="20230619 18:29:23.338"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:29:23.340" level="INFO">/bin/sh: 1: go: not found</msg>
+<msg timestamp="20230619 18:29:23.340" level="INFO"/>
+<status status="PASS" starttime="20230619 18:29:23.339" endtime="20230619 18:29:23.340"/>
+</kw>
+<status status="PASS" starttime="20230619 18:29:23.338" endtime="20230619 18:29:23.340"/>
+</branch>
+<status status="PASS" starttime="20230619 18:29:23.338" endtime="20230619 18:29:23.341"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:29:23.341" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:29:23.341" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:29:23.341" endtime="20230619 18:29:23.341"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" starttime="20230619 18:29:23.341" endtime="20230619 18:29:23.342"/>
+</return>
+<msg timestamp="20230619 18:29:23.342" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="FAIL" starttime="20230619 18:29:23.334" endtime="20230619 18:29:23.342"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${percent}</var>
+<arg>${result.stdout}</arg>
+<arg>total:.*?([0-9.]+%)$</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230619 18:29:23.343" level="INFO">${percent} = []</msg>
+<status status="PASS" starttime="20230619 18:29:23.342" endtime="20230619 18:29:23.343"/>
+</kw>
+<kw name="Set Suite Metadata" library="BuiltIn">
+<arg>Code coverage</arg>
+<arg>${percent[0]} [${cov_filename}.html|HTML Report] | [${cov_filename}|Coverage file]</arg>
+<doc>Sets metadata for the current test suite.</doc>
+<msg timestamp="20230619 18:29:23.344" level="FAIL">Resolving variable '${percent[0]}' failed: IndexError: list index out of range</msg>
+<status status="FAIL" starttime="20230619 18:29:23.343" endtime="20230619 18:29:23.344"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:29:23.317" endtime="20230619 18:29:23.344"/>
+</kw>
+<kw name="Remove Directory" library="OperatingSystem">
+<arg>${OUTPUT DIR}/go-coverage</arg>
+<arg>recursive=True</arg>
+<doc>Removes the directory pointed to by the given ``path``.</doc>
+<msg timestamp="20230619 18:29:23.344" level="INFO" html="true">Removed directory '&lt;a href="file:///w/e2e_tests/results/go-coverage"&gt;/w/e2e_tests/results/go-coverage&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230619 18:29:23.344" endtime="20230619 18:29:23.344"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:29:23.316" endtime="20230619 18:29:23.345"/>
+</kw>
+<status status="FAIL" starttime="20230619 18:29:23.314" endtime="20230619 18:29:23.345">Several failures occurred:
+
+1) 127 != 0
+
+2) 127 != 0
+
+3) Resolving variable '${percent[0]}' failed: IndexError: list index out of range</status>
+</kw>
+<doc>Executes test cases for handling file uploads
+and processing non-PUT operations.</doc>
+<status status="FAIL" starttime="20230619 18:28:53.046" endtime="20230619 18:29:23.345">Suite setup failed:
+Keyword 'GET' failed after retrying for 30 seconds. The last error was: ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7fbc3517f100&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Also suite teardown failed:
+Several failures occurred:
+
+1) 127 != 0
+
+2) 127 != 0
+
+3) Resolving variable '${percent[0]}' failed: IndexError: list index out of range</status>
+</suite>
+<suite id="s1-s5" name="005 Binaries" source="/w/e2e_tests/005_binaries.robot">
+<test id="s1-s5-t1" name="Build distribution binaries" line="9">
+<kw name="Expect Successful Execution" library="keywords">
+<arg>make dist-all</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:29:23.354" level="INFO">Starting process:
+make dist-all</msg>
+<msg timestamp="20230619 18:29:23.356" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:29:23.417" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:29:23.418" level="INFO">${result} = &lt;result object with rc 2&gt;</msg>
+<status status="PASS" starttime="20230619 18:29:23.354" endtime="20230619 18:29:23.418"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:29:23.420" level="INFO">/bin/bash: line 1: go: command not found
+make[1]: *** [Makefile:69: dist/caddy-put-linux-x86_64] Error 127</msg>
+<msg timestamp="20230619 18:29:23.420" level="INFO">make[1]: Entering directory '/w'
+mkdir -p dist
+GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -o dist/caddy-put-linux-x86_64 cmd/caddy/main.go
+make[1]: Leaving directory '/w'</msg>
+<status status="PASS" starttime="20230619 18:29:23.419" endtime="20230619 18:29:23.420"/>
+</kw>
+<status status="PASS" starttime="20230619 18:29:23.418" endtime="20230619 18:29:23.420"/>
+</branch>
+<status status="PASS" starttime="20230619 18:29:23.418" endtime="20230619 18:29:23.420"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:29:23.421" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:29:23.421" level="FAIL">2 != 0</msg>
+<status status="FAIL" starttime="20230619 18:29:23.421" endtime="20230619 18:29:23.421"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="NOT RUN" starttime="20230619 18:29:23.422" endtime="20230619 18:29:23.422"/>
+</return>
+<status status="FAIL" starttime="20230619 18:29:23.353" endtime="20230619 18:29:23.422"/>
+</kw>
+<doc>Builds the distribution binaries using the
+'make dist-all' command.</doc>
+<status status="FAIL" starttime="20230619 18:29:23.352" endtime="20230619 18:29:23.422">2 != 0</status>
+</test>
+<test id="s1-s5-t2" name="Built binaries should run" line="15">
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${binary_list}</var>
+<arg>./dist/</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20230619 18:29:23.424" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///w/dist"&gt;/w/dist&lt;/a&gt;'.</msg>
+<msg timestamp="20230619 18:29:23.424" level="INFO">0 files:
+</msg>
+<msg timestamp="20230619 18:29:23.424" level="INFO">${binary_list} = []</msg>
+<status status="PASS" starttime="20230619 18:29:23.424" endtime="20230619 18:29:23.424"/>
+</kw>
+<for flavor="IN">
+<var>${binary}</var>
+<value>@{binary_list}</value>
+<iter>
+<var name="${binary}"/>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>./dist/${binary} list-modules</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<status status="NOT RUN" starttime="20230619 18:29:23.426" endtime="20230619 18:29:23.426"/>
+</kw>
+<status status="NOT RUN" starttime="20230619 18:29:23.424" endtime="20230619 18:29:23.426"/>
+</iter>
+<status status="NOT RUN" starttime="20230619 18:29:23.424" endtime="20230619 18:29:23.426"/>
+</for>
+<doc>Verifies that all the built binaries in the 'dist/'
+subdirectory execute successfully.</doc>
+<status status="PASS" starttime="20230619 18:29:23.423" endtime="20230619 18:29:23.426"/>
+</test>
+<doc>Verifies the build process of distribution binaries and
+ensures that the built binaries execute successfully.</doc>
+<status status="FAIL" starttime="20230619 18:29:23.346" endtime="20230619 18:29:23.426"/>
+</suite>
+<suite id="s1-s6" name="006 Summary" source="/w/e2e_tests/006_summary.robot">
+<test id="s1-s6-t1" name="Collate code coverage reports" line="11">
+<kw name="Get Coverage Filename From Suite Source" library="keywords">
+<var>${cov_path}</var>
+<var>${cov_filename}</var>
+<doc>Splits `/w/e2e_tests/006_summary.robot` into path and filename. Constructs a
+path to the coverage file in `/w/e2e_tests/results`. Returns the coverage full file
+path and the coverage filename separately.</doc>
+<kw name="Split Path" library="OperatingSystem">
+<var>${path}</var>
+<var>${suite_filename}</var>
+<arg>${SUITE SOURCE}</arg>
+<doc>Splits the given path from the last path separator (``/`` or ``\``).</doc>
+<msg timestamp="20230619 18:29:23.435" level="INFO">${path} = /w/e2e_tests</msg>
+<msg timestamp="20230619 18:29:23.435" level="INFO">${suite_filename} = 006_summary.robot</msg>
+<status status="PASS" starttime="20230619 18:29:23.434" endtime="20230619 18:29:23.435"/>
+</kw>
+<kw name="Split Extension" library="OperatingSystem">
+<var>${suite_name}</var>
+<var>${ext}</var>
+<arg>${suite_filename}</arg>
+<doc>Splits the extension from the given path.</doc>
+<msg timestamp="20230619 18:29:23.435" level="INFO">${suite_name} = 006_summary</msg>
+<msg timestamp="20230619 18:29:23.435" level="INFO">${ext} = robot</msg>
+<status status="PASS" starttime="20230619 18:29:23.435" endtime="20230619 18:29:23.435"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${cov_path}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>${suite_name}.coverage</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20230619 18:29:23.435" level="INFO">${cov_path} = /w/e2e_tests/results/006_summary.coverage</msg>
+<status status="PASS" starttime="20230619 18:29:23.435" endtime="20230619 18:29:23.435"/>
+</kw>
+<return>
+<value>${cov_path}</value>
+<value>${suite_name}.coverage</value>
+<status status="PASS" starttime="20230619 18:29:23.436" endtime="20230619 18:29:23.436"/>
+</return>
+<msg timestamp="20230619 18:29:23.436" level="INFO">${cov_path} = /w/e2e_tests/results/006_summary.coverage</msg>
+<msg timestamp="20230619 18:29:23.436" level="INFO">${cov_filename} = 006_summary.coverage</msg>
+<status status="PASS" starttime="20230619 18:29:23.434" endtime="20230619 18:29:23.436"/>
+</kw>
+<kw name="Expect Successful Execution" library="keywords">
+<arg>go run cmd/gocovmerge/gocovmerge.go ${OUTPUT DIR}/*.coverage &gt; ${cov_path}</arg>
+<doc>Runs a ${command} and expects it to succeed. ${command}
+should be a string representing the shell command.</doc>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${command}</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20230619 18:29:23.438" level="INFO">Starting process:
+go run cmd/gocovmerge/gocovmerge.go /w/e2e_tests/results/*.coverage &gt; /w/e2e_tests/results/006_summary.coverage</msg>
+<msg timestamp="20230619 18:29:23.441" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20230619 18:29:23.441" level="INFO">Process completed.</msg>
+<msg timestamp="20230619 18:29:23.441" level="INFO">${result} = &lt;result object with rc 127&gt;</msg>
+<status status="PASS" starttime="20230619 18:29:23.438" endtime="20230619 18:29:23.441"/>
+</kw>
+<if>
+<branch type="IF" condition="${result.rc} != 0">
+<kw name="Log Many" library="BuiltIn">
+<arg>${result.stderr}</arg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230619 18:29:23.443" level="INFO">/bin/sh: 1: go: not found</msg>
+<msg timestamp="20230619 18:29:23.443" level="INFO"/>
+<status status="PASS" starttime="20230619 18:29:23.443" endtime="20230619 18:29:23.443"/>
+</kw>
+<status status="PASS" starttime="20230619 18:29:23.442" endtime="20230619 18:29:23.443"/>
+</branch>
+<status status="PASS" starttime="20230619 18:29:23.442" endtime="20230619 18:29:23.444"/>
+</if>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230619 18:29:23.444" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20230619 18:29:23.444" level="FAIL">127 != 0</msg>
+<status status="FAIL" starttime="20230619 18:29:23.444" endtime="20230619 18:29:23.444"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="NOT RUN" starttime="20230619 18:29:23.444" endtime="20230619 18:29:23.445"/>
+</return>
+<status status="FAIL" starttime="20230619 18:29:23.437" endtime="20230619 18:29:23.445"/>
+</kw>
+<kw name="Generate Coverage Report" library="keywords">
+<doc>Generate coverage report from generated files</doc>
+<status status="NOT RUN" starttime="20230619 18:29:23.445" endtime="20230619 18:29:23.445"/>
+</kw>
+<doc>Combine all code coverage profiles into one.</doc>
+<status status="FAIL" starttime="20230619 18:29:23.433" endtime="20230619 18:29:23.445">127 != 0</status>
+</test>
+<doc>Aggregate multiple code coverage reports into a single report.
+It leverages the gocovmerge utility, a Go tool that merges multiple
+coverage profiles. The suite utilizes keywords defined in the
+resources/keywords.robot file.</doc>
+<status status="FAIL" starttime="20230619 18:29:23.428" endtime="20230619 18:29:23.446"/>
+</suite>
+<status status="FAIL" starttime="20230619 18:28:49.640" endtime="20230619 18:29:23.448"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="12" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="12" skip="0" id="s1" name="E2E Tests">E2E Tests</stat>
+<stat pass="2" fail="1" skip="0" id="s1-s1" name="001 Source Code">E2E Tests.001 Source Code</stat>
+<stat pass="0" fail="2" skip="0" id="s1-s2" name="002 Unit Tests">E2E Tests.002 Unit Tests</stat>
+<stat pass="0" fail="4" skip="0" id="s1-s3" name="003 Configuration">E2E Tests.003 Configuration</stat>
+<stat pass="0" fail="3" skip="0" id="s1-s4" name="004 Requests">E2E Tests.004 Requests</stat>
+<stat pass="1" fail="1" skip="0" id="s1-s5" name="005 Binaries">E2E Tests.005 Binaries</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s6" name="006 Summary">E2E Tests.006 Summary</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
