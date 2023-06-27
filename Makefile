@@ -68,7 +68,7 @@ dist/caddy-put-linux-x86_64: $(GO_SOURCES) | $(DIST_DIR)
 	GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -o $@ cmd/caddy/main.go
 
 install-deps: ## Install dependencies
-	pip3 install -r e2e_tests/resources/requirements.txt
+	pip3 install --break-system-packages -r e2e_tests/resources/requirements.txt
 	which xcaddy || go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 	which staticcheck || go install honnef.co/go/tools/cmd/staticcheck@latest
 	which gofumpt || go install mvdan.cc/gofumpt@latest
