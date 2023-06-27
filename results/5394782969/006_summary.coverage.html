@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>caddy: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">/w/cmd/caddy/main.go (100.0%)</option>
+				
+				<option value="file1">github.com/madworx/caddy-put-upload/http_upload.go (82.2%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package main
+
+import (
+        caddycmd "github.com/caddyserver/caddy/v2/cmd"
+
+        // plug in the HTTP server type
+        _ "github.com/caddyserver/caddy/v2/modules/standard"
+        _ "github.com/madworx/caddy-put-upload"
+)
+
+func main() <span class="cov8" title="1">{
+        caddycmd.Main()
+}</span>
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">// Package httpupload provides a HTTP handler for Caddy server,
+// enabling file uploads using PUT HTTP method.
+package httpupload
+
+import (
+        "fmt"
+        "io"
+        "net/http"
+        "os"
+        "path"
+        "path/filepath"
+        "strings"
+
+        "github.com/caddyserver/caddy/v2"
+        "github.com/caddyserver/caddy/v2/caddyconfig/caddyfile"
+        "github.com/caddyserver/caddy/v2/caddyconfig/httpcaddyfile"
+        "github.com/caddyserver/caddy/v2/modules/caddyhttp"
+        "go.uber.org/zap"
+)
+
+// init function registers the HTTPUpload module and the Caddyfile
+// handler directive upon package initialization.
+func init() <span class="cov8" title="1">{
+        caddy.RegisterModule(HTTPUpload{})
+        httpcaddyfile.RegisterHandlerDirective("http_put_file", parseCaddyfile)
+}</span>
+
+// HTTPUpload is a struct that defines the module for handling HTTP PUT
+// requests for file uploads.
+type HTTPUpload struct {
+        UploadDir   string `json:"upload_dir,omitempty"`
+        RoutePrefix string `json:"route_prefix,omitempty"`
+}
+
+// CaddyModule provides the module information to Caddy.
+// It creates a new HTTPUpload module.
+func (HTTPUpload) CaddyModule() caddy.ModuleInfo <span class="cov8" title="1">{
+        return caddy.ModuleInfo{
+                ID:  "http.handlers.http_put",
+                New: func() caddy.Module </span><span class="cov8" title="1">{ return new(HTTPUpload) }</span>,
+        }
+}
+
+func (h HTTPUpload) Provision(ctx caddy.Context) error <span class="cov8" title="1">{
+        return nil
+}</span>
+
+// ServeHTTP handles the HTTP requests. If it's a PUT request, it
+// handles the upload process and writes the file to the defined
+// upload directory. If the request method is not PUT, it simply
+// calls the next handler in the chain.
+func (h HTTPUpload) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddyhttp.Handler) error <span class="cov8" title="1">{
+        // Only handle HTTP PUT method
+        if r.Method != http.MethodPut </span><span class="cov8" title="1">{
+                return next.ServeHTTP(w, r)
+        }</span>
+
+        <span class="cov8" title="1">defer r.Body.Close()
+
+        // Trimming the UploadDir from URL Path and creating the file upload path
+        uploadRootPath := filepath.Join(h.UploadDir)
+        uploadFilePath := strings.TrimPrefix(path.Clean(r.URL.Path), h.RoutePrefix)
+        uploadDiskPath := filepath.Join(uploadRootPath, uploadFilePath)
+
+        logger := caddy.Log().Named("http.handlers.http_put")
+        logger.Info("upload information",
+                zap.String("r.URL.Path", r.URL.Path),
+                zap.String("h.UploadDir", h.UploadDir),
+                zap.String("h.RoutePrefix", h.RoutePrefix),
+                zap.String("uploadDiskPath", uploadDiskPath),
+                zap.String("uploadFilePath", uploadFilePath),
+        )
+
+        // Ensuring that the file is not uploaded outside of the defined upload directory
+        if !strings.HasPrefix(uploadDiskPath, uploadRootPath) </span><span class="cov0" title="0">{
+                http.Error(w, "Attempting to write to a path outside the defined upload directory", http.StatusForbidden)
+                return nil
+        }</span>
+
+        <span class="cov8" title="1">err := os.MkdirAll(filepath.Dir(uploadDiskPath), os.ModePerm)
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("unable to create directories: %w", err)
+        }</span>
+
+        <span class="cov8" title="1">tempFile, err := os.CreateTemp(filepath.Dir(uploadDiskPath), ".upload-*")
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("unable to create temp file: %w", err)
+        }</span>
+        <span class="cov8" title="1">defer os.Remove(tempFile.Name()) // clean up in case of failure
+
+        if _, err = io.Copy(tempFile, r.Body); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("unable to write file: %w", err)
+        }</span>
+
+        <span class="cov8" title="1">if err = tempFile.Close(); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("unable to close temp file: %w", err)
+        }</span>
+
+        // Rename the temp file to the desired name, overwriting if file already exists
+        <span class="cov8" title="1">if err = os.Rename(tempFile.Name(), uploadDiskPath); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("unable to rename temp file: %w", err)
+        }</span>
+
+        <span class="cov8" title="1">w.WriteHeader(http.StatusCreated)
+        if _, err := w.Write([]byte(fmt.Sprintf("File %s created successfully.", uploadFilePath))); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("unable to write response: %w", err)
+        }</span>
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+// UnmarshalCaddyfile reads the Caddyfile configuration into the HTTPUpload struct.
+func (h *HTTPUpload) UnmarshalCaddyfile(d *caddyfile.Dispenser) error <span class="cov8" title="1">{
+        for d.Next() </span><span class="cov8" title="1">{
+                args := d.RemainingArgs()
+                if len(args) != 2 </span><span class="cov8" title="1">{
+                        return d.ArgErr()
+                }</span>
+                <span class="cov8" title="1">h.UploadDir = args[0]
+                h.RoutePrefix = args[1]</span>
+        }
+        <span class="cov8" title="1">return nil</span>
+}
+
+// parseCaddyfile is a helper function that unmarshals a Caddyfile configuration into
+// an HTTPUpload object and returns it as a MiddlewareHandler.
+func parseCaddyfile(h httpcaddyfile.Helper) (caddyhttp.MiddlewareHandler, error) <span class="cov8" title="1">{
+        var m HTTPUpload
+        err := m.UnmarshalCaddyfile(h.Dispenser)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return m, nil</span>
+}
+
+// Interface guards
+var (
+        _ caddyhttp.MiddlewareHandler = (*HTTPUpload)(nil)
+        _ caddyfile.Unmarshaler       = (*HTTPUpload)(nil)
+)
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
