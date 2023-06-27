@@ -1,19 +1,19 @@
 # caddy-put-upload
 
-ChatGPT: Summarize what this project does.
+caddy-put-upload is a project that allows you to use HTTP PUT requests for file uploads in the Caddy server.
 
 ## Using
 
 ### Pre built binaries
 
-ChatGPT: If you want to use it with basic authentnication, or with the security module, you can use the pre built binaries.
+For use with basic authentication or the security module, you can utilize the pre-built binaries available.
 
-the dist/caddy-put-linux-x86_64 has the caddy standard modules.
-the dist/caddy-put-security-linux-x86_64 has the caddy standard modules and the security module.
+- `dist/caddy-put-linux-x86_64` has the caddy standard modules.
+- `dist/caddy-put-security-linux-x86_64` has the caddy standard modules and the security module.
 
 ### Build your own
 
-Example of building your own docker image:
+You can build your own Docker image using the example provided:
 
 ```dockerfile
 FROM caddy:2.6.4-builder AS builder
@@ -31,9 +31,11 @@ COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 #### Easy mode: Use VSCode dev container
 
-ChatGPT: Describe here
+You can contribute to this project using the VSCode dev container which provides a pre-configured development environment.
 
 #### Not using VSCode, but docker
+
+If you're not using VSCode but have Docker installed, you can still contribute by building and running the project using Docker.
 
 ```shell
 $ docker build -t madworx/caddy-put-upload -f .devcontainer/Dockerfile .
@@ -42,7 +44,7 @@ $ docker run -it --rm -v $(pwd):/w -w /w madworx/caddy-put-upload make install-d
 
 ### Fully local installation
 
-You'll need the following prerequisites installed and in your `$PATH`:
+For a fully local installation, ensure the following prerequisites are installed and in your `$PATH`:
 
 - go 1.20+
 - robot framework 6.0+
@@ -50,10 +52,10 @@ You'll need the following prerequisites installed and in your `$PATH`:
 - make
 - git
 
-As well as:
+Additional requirements include:
 
-- python packages: listed in `e2e_tests/resources/requirements.txt`.
-- golang: `xcaddy`, `staticcheck` and `gofumpt`.
+- Python packages: As listed in e2e_tests/resources/requirements.txt.
+- Golang packages: xcaddy, staticcheck and gofumpt.
 
 For Debian-based installations:
 
