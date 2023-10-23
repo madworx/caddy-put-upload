@@ -1,0 +1,62 @@
+#
+# Example configuration where uploads are goverened by Basic Auth and
+# all other requests are governed by OAuth2 using the GitHub identity
+# provider.
+#
+# Configure the GitHub identity provider with e.g. the following:
+#
+#   - Homepage URL: http://localhost:8080/
+#   - Callback URL: http://localhost:8080/authzproxy/oauth2/github/
+#
+# Upload a file using basic authentication: e.g:
+#   $ curl -viT go.mod http://Bob:hiccup@localhost:8080/upload/test.txt
+#
+{
+	order authenticate before respond
+	order authorize before basicauth
+
+	security {
+		oauth identity provider github <GITHUB-CLIENT-ID> <GITHUB-SECRET>
+
+		authentication portal authz_proxy_portal {
+			crypto key sign-verify {env.JWT_SHARED_KEY}
+			enable identity provider github
+			transform user {
+				match realm github
+				match sub github.com/<YOUR-USERNAME>
+				action add role authp/user
+			}
+		}
+
+		authorization policy default_authz_policy {
+			set auth url /authzproxy/oauth2/github/
+			crypto key verify {env.JWT_SHARED_KEY}
+			allow roles authp/user
+		}
+	}
+}
+
+:8080 {
+	log {
+		level DEBUG
+	}
+
+	# Route for /upload* with Basic Auth
+	route /upload* {
+		basicauth {
+			# Bob:hiccup
+			Bob $2a$14$Zkx19XLiW6VYouLHR5NmfOFU0z2GTNmpkT/5qqR7hx4IjWJPDhjvG
+		}
+		http_put_file ./test /upload
+	}
+
+	route /authzproxy* {
+		authenticate with authz_proxy_portal
+	}
+
+	route /* {
+		authorize with default_authz_policy
+		root * ./test/
+		file_server browse
+	}
+}

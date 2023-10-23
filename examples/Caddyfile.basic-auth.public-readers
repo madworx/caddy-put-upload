@@ -1,0 +1,25 @@
+# This example configuration shows you how to host a simple file server
+# that allows file uploads via HTTP PUT to the /upload directory using
+# Basic authentication. You can browse the uploaded files using a web
+# browser without authentication.
+
+:8080 {
+	log {
+		level DEBUG
+	}
+
+	# Route for /upload* with Basic Auth
+	route /upload* {
+		basicauth {
+			# Bob:hiccup
+			Bob $2a$14$Zkx19XLiW6VYouLHR5NmfOFU0z2GTNmpkT/5qqR7hx4IjWJPDhjvG
+		}
+		http_put_file ./test /upload
+	}
+
+	# Allow unauthenticated access to the the rest.
+	route /* {
+		root * ./test/
+		file_server browse
+	}
+}

@@ -15,6 +15,10 @@ Example configuration: basic authentication
     [Documentation]    Test that example configuration with HTTP basic authentication is accepted
     Validate Configuration    examples/Caddyfile.basic-auth    0
 
+Example configuration: basic-auth, public-readers
+    [Documentation]    Example configuration with HTTP basic authentication and public readers
+    Validate Configuration    examples/Caddyfile.basic-auth.public-readers    0
+
 Example configuration: no authentication
     [Documentation]    Test that example configuration without authentication is accepted
     Validate Configuration    examples/Caddyfile.no-authentication    0
