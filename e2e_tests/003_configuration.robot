@@ -23,10 +23,10 @@ Invalid configuration: empty
     [Documentation]    Test that an invalid configuration is rejected (no arguments)
     Validate Configuration    e2e_tests/resources/Caddyfile.invalid-no-arg
     ...    1
-    ...    Wrong argument count or unexpected line ending after 'http_put_file'
+    ...    wrong argument count or unexpected line ending after 'http_put_file'
 
 Invalid configuration: structure
     [Documentation]    Test that an invalid configuration is rejected (nested argument)
     Validate Configuration    e2e_tests/resources/Caddyfile.invalid-nested-args
     ...    1
-    ...    Wrong argument count or unexpected line ending after 'http_put_file'
+    ...    wrong argument count or unexpected line ending after 'http_put_file'
