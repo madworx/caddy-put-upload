@@ -1,6 +1,6 @@
 module github.com/madworx/caddy-put-upload
 
-go 1.19
+go 1.21
 
 require (
 	github.com/caddyserver/caddy/v2 v2.7.5
